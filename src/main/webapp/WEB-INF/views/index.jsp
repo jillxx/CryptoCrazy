@@ -13,7 +13,7 @@
 	<h1>Select your Cryptocurrency:</h1>
 
 	<form action="pricechange">
-		<select name="form">
+		<select name="currency">
 			<option value="BCH">BCH</option>
 			<option value="BTC">BTC</option>
 			<option value="ETH">ETH</option>
@@ -22,7 +22,6 @@
 
 		</select>
 
-	</form>
 
 
 	<h1>Select a Start Date</h1>
@@ -37,6 +36,7 @@
 	<br>
 	<input type="submit" name="Submit">
 	
+	</form>
 	
 </body>
 </html>
