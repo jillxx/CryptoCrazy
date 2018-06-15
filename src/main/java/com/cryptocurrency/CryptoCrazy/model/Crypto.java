@@ -211,5 +211,13 @@ public class Crypto {
 		OMG = oMG;
 	}
 
+	@Override
+	public String toString() {
+		return "Crypto [BTC=" + BTC + ", ETH=" + ETH + ", XRP=" + XRP + ", BCH=" + BCH + ", EOS=" + EOS + ", LTC=" + LTC
+				+ ", XLM=" + XLM + ", ADA=" + ADA + ", IOT=" + IOT + ", TRX=" + TRX + ", USDT=" + USDT + ", NEO=" + NEO
+				+ ", DASH=" + DASH + ", XMR=" + XMR + ", XEM=" + XEM + ", BNB=" + BNB + ", VEN=" + VEN + ", ETC=" + ETC
+				+ ", QTUM=" + QTUM + ", OMG=" + OMG + "]";
+	}
+
 	
 }

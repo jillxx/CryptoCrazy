@@ -53,10 +53,10 @@ public class HomeController {
 		ResponseEntity<Crypto> price = restTemplate.exchange("https://min-api.cryptocompare.com/data/pricehistorical?fsym="+currencyType+"&tsyms=USD&ts="+timeStampStart, HttpMethod.GET, entity, Crypto.class);
 		
 		//geting usd value for BTC bitcoin
-		price.getBody().getBTC().getUSD();//FIXME:geting USD data for all currency
+	//	price.getBody().getBTC().getUSD();//FIXME:geting USD data for all currency
 		
 		
-		System.out.println(price.getBody().getBTC().getUSD());  //for testing purposes
+	//	System.out.println(price.getBody().getBTC().getUSD());  //for testing purposes
 		return mv.addObject("crypto", price.getBody());
 		
 	}
