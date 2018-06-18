@@ -141,9 +141,9 @@ public class HomeController {
 		}
 		//difference between two prices
 		double pricedifference = priceend - pricestart;
+		double percentChange = ((pricestart - priceend) / pricestart) * 100;
 
-
-		return mv.addObject("crypto", pricedifference);
+		return mv.addObject("crypto", pricedifference).addObject("percent", percentChange);
 
 	}
 
