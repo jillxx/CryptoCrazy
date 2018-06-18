@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
 
-//import dot.com.Jcoffeeshop.entity.Person;
-
 @Repository
 @Transactional
 public class LeaderboardDao {
