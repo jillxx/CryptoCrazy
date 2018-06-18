@@ -16,6 +16,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cryptocurrency.CryptoCrazy.model.Crypto;
+import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
+import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
+
+
 
 @Controller
 public class HomeController {
@@ -161,4 +165,15 @@ public class HomeController {
 			return null;
 		}
 	}
+	
+	@RequestMapping("addplayer")
+	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
+		Leaderboard l = new Leaderboard(name, mode);
+	
+		
+		Items i = new Items (name, describe, qty, price);
+		dao.addDrink(i);
+		return new ModelAndView("redirect:/");
+	}
+	
 }
