@@ -23,6 +23,15 @@ public class Leaderboard {
 	public Leaderboard() {
 		
 	}
+	
+	
+
+	public Leaderboard(String name, String mode) {
+		super();
+		this.name = name;
+		this.mode = mode;
+	}
+
 
 	public int getId() {
 		return id;

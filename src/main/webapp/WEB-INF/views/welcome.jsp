@@ -11,8 +11,8 @@
 	<h1>Crypto: Cash or Crash!!</h1>
 	<br>
 
-	<form action = "">
-	Your Name: <input type="text" name="">
+	<form action = "addplayer">
+	Your Name: <input type="text" name="name">
 	Select Mode: 
 			<select name="mode">
 			<option value="Easy">Easy</option>

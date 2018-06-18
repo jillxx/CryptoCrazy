@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,16 +18,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cryptocurrency.CryptoCrazy.model.Crypto;
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
+
 import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
 
 
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	public LeaderboardDao dao;
 
 	@RequestMapping("/") // can get either getmapping or requestmapping not postmapping here tho
 	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView("index"); // page of the jsp that should be returned
+		ModelAndView mv = new ModelAndView("welcome"); // page of the jsp that should be returned
 
 		return mv;
 
@@ -169,11 +174,8 @@ public class HomeController {
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
 		Leaderboard l = new Leaderboard(name, mode);
-	
-		
-		Items i = new Items (name, describe, qty, price);
-		dao.addDrink(i);
-		return new ModelAndView("redirect:/");
+		dao.add(l);
+		return new ModelAndView("index");
 	}
 	
 }
