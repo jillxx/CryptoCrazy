@@ -25,6 +25,8 @@ import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
 
 @Controller
 public class HomeController {
+	public static double moneyOnHold;
+	public static int counter;
 	
 	@Autowired
 	public LeaderboardDao dao;
@@ -32,9 +34,18 @@ public class HomeController {
 	@RequestMapping("/") // can get either getmapping or requestmapping not postmapping here tho
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("welcome"); // page of the jsp that should be returned
-
+		
 		return mv;
 
+	}
+	
+	@RequestMapping("addplayer")
+	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
+		Leaderboard l = new Leaderboard(name, mode);
+		dao.add(l);
+		moneyOnHold = 1000.0;
+		counter = 3;
+		return new ModelAndView("index");
 	}
 
 	@RequestMapping("pricechange")
@@ -45,7 +56,7 @@ public class HomeController {
 		Long timeStampStart = convertStringToTimestamp(date1);
 		Long timeStampEnd = convertStringToTimestamp(date2);
 
-		ModelAndView mv = new ModelAndView("priceresult"); // page of the jsp that should be returned
+		ModelAndView mv = new ModelAndView("index"); // page of the jsp that should be returned
 
 		// adding headers to our API request
 		HttpHeaders headers = new HttpHeaders();
@@ -151,8 +162,12 @@ public class HomeController {
 		//difference between two prices
 		double pricedifference = priceend - pricestart;
 		double percentChange = ((pricedifference) / pricestart) * 100;
-
-		return mv.addObject("crypto", pricedifference).addObject("percent", percentChange);
+		moneyOnHold = moneyOnHold + moneyOnHold *(pricedifference) / pricestart;
+		counter--;
+		if(counter == 0) {
+			return new ModelAndView ("leaderboard");
+		}
+		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentChange).addObject("money",moneyOnHold);
 
 	}
 
@@ -171,11 +186,6 @@ public class HomeController {
 		}
 	}
 	
-	@RequestMapping("addplayer")
-	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
-		Leaderboard l = new Leaderboard(name, mode);
-		dao.add(l);
-		return new ModelAndView("index");
-	}
+
 	
 }
