@@ -45,6 +45,7 @@ public class HomeController {
 		// to attach the headers to our request we need the HttpEntity
 		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 		RestTemplate restTemplate = new RestTemplate();
+
 		// ResponseEntity will help us get the data from the API
 		ResponseEntity<Crypto> price1 = restTemplate
 				.exchange("https://min-api.cryptocompare.com/data/pricehistorical?fsym=" + currencyType
@@ -140,9 +141,8 @@ public class HomeController {
 		}
 		//difference between two prices
 		double pricedifference = priceend - pricestart;
-		
 
-		// System.out.println(price.getBody().getBTC().getUSD()); //for testing purposes
+
 		return mv.addObject("crypto", pricedifference);
 
 	}

@@ -14,10 +14,26 @@
 
 	<form action="pricechange">
 		<select name="currency">
-			<option value="BCH">BCH</option>
 			<option value="BTC">BTC</option>
 			<option value="ETH">ETH</option>
 			<option value="XRP">XRP</option>
+			<option value="BCH">BCH</option>
+			<option value="EOS">EOS</option>
+			<option value="LTC">LTC</option>
+			<option value="XLM">XLM</option>
+			<option value="ADA">ADA</option>
+			<option value="IOT">IOT</option>
+			<option value="TRX">TRX</option>
+			<option value="USDT">USDT</option>
+			<option value="NEO">NEO</option>
+			<option value="DASH">DASH</option>
+			<option value="XMR">XMR</option>
+			<option value="XEM">XEM</option>
+			<option value="BNB">BNB</option>
+			<option value="VEN">VEN</option>
+			<option value="ETC">ETC</option>
+			<option value="QTUM">QTUM</option>
+			<option value="OMG">OMG</option>
 
 
 		</select>
