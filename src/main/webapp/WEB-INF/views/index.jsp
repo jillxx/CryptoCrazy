@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,16 +9,15 @@
 <title>Index</title>
 </head>
 <body>
-	<h1>Crypto Currency Welcome Page</h1>
-	<br>
-purchase price	${pricestart }<br>
-sell price ${priceend }<br>
-percent change ${percent }%<br>
-Your Money ${money }
+
+	<br> Purchase price: ${pricestart }
+	<br> Sell price: ${priceend }
+	<br> Percentage change: ${percent }%
+	<br> Your Money: ${money }
 <br>
 	<h1>Select your Cryptocurrency:</h1>
 
-	<form action="pricechange">
+	<form name="date-form" action="pricechange"	onsubmit="return checkDate()">
 		<select name="currency">
 			<option value="BTC">BTC</option>
 			<option value="ETH">ETH</option>
@@ -39,25 +39,18 @@ Your Money ${money }
 			<option value="ETC">ETC</option>
 			<option value="QTUM">QTUM</option>
 			<option value="OMG">OMG</option>
-
-
 		</select>
 
+		<h1>Select a Start Date</h1>
+		Date: <input type="date" name="date1">
 
+		<h1>Select an End Date</h1>
+		Date: <input type="date" name="date2"> 
+		<br> <br> 
+		<input type="submit" name="Submit">
 
-	<h1>Select a Start Date</h1>
-	Date:
-	<input type="date" name="date1">
-	
-
-	<h1>Select an End Date</h1>
-	Date:
-	<input type="date" name="date2">
-	<br>
-	<br>
-	<input type="submit" name="Submit">
-	
 	</form>
-	
 </body>
 </html>
+
+<script type="text/javascript" src="js/file.js"></script>
