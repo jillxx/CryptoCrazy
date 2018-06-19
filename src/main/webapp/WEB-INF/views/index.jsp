@@ -15,6 +15,11 @@
 	<br> Percentage change: ${percent }%
 	<br> Your Money: ${money }
 	<br>
+purchase price	${pricestart }<br>
+sell price ${priceend }<br>
+percent change ${percent }%<br>
+Your Money ${money }
+<br>
 	<h1>Select your Cryptocurrency:</h1>
 
 	<form name="date-form" action="pricechange"	onsubmit="return checkDate()">
