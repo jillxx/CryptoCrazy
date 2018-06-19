@@ -3,6 +3,9 @@ package com.cryptocurrency.CryptoCrazy;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -53,7 +56,7 @@ public class HomeController {
 			counter = 3;	
 		}else if(mode.equalsIgnoreCase("medium")) {
 			counter = 5;
-		}else if(mode.equals("difficult")){
+		}else if(mode.equalsIgnoreCase("difficult")){
 			counter = 7;
 		}else {
 			counter = (int)Integer.MAX_VALUE;//FIXME: not working.infinity number
@@ -173,21 +176,33 @@ public class HomeController {
 			priceend = price2.getBody().getXRP().getUSD();
 			break;
 		}
+		
+		//direct back to the index page if 
+		String emessage = currencyType + "did not exist on "+ date1;
+		if(pricestart == 0.0) {
+			ModelAndView mverror = new ModelAndView("index");
+			return mverror.addObject("errormessage", emessage).addObject("money",moneyOnHold).addObject("counter", counter);
+		}
+	
+		
+		
 		//difference between two prices
 		double pricedifference = priceend - pricestart;
 		double percentChange = ((pricedifference) / pricestart) * 100;
 		moneyOnHold = moneyOnHold + moneyOnHold *(pricedifference) / pricestart;
+		System.out.println("moneyonhold"+moneyOnHold);
 		counter--;
 		System.out.println(counter);
 		//update the leaderboard
 		lb.setScore(moneyOnHold);
 		lp.save(lb);
 			
-		
 		if(counter == 0) {
-			return new ModelAndView ("leaderboard");
+			List<Leaderboard> leaderBoard = new ArrayList<>();
+			leaderBoard = lp.findAll();
+			return new ModelAndView("leaderboard","leaderlist", leaderBoard);
 		}
-		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentChange).addObject("money",moneyOnHold);
+		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentChange).addObject("money",moneyOnHold).addObject("counter", counter);
 
 	}
 

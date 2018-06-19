@@ -14,6 +14,7 @@
 	<br> Sell price: ${priceend }
 	<br> Percentage change: ${percent }%
 	<br> Your Money: ${money }
+	<br> Remaining Buys/Sells: ${counter }
 <br>
 	<h1>Select your Cryptocurrency:</h1>
 
@@ -50,6 +51,8 @@
 		<input type="submit" name="Submit">
 
 	</form>
+	
+	${errormessage }
 </body>
 </html>
 
