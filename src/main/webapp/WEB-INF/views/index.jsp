@@ -43,10 +43,10 @@
 		</select>
 
 		<h1>Select a Start Date</h1>
-		Date: <input type="date" name="date1">
+		Date: <input type="date" name="date1" min="2000-01-02" max="2018-06-19">
 
 		<h1>Select an End Date</h1>
-		Date: <input type="date" name="date2"> 
+		Date: <input type="date" name="date2" min="2000-01-02" max="2018-06-19"> 
 		<br> <br> 
 		<input type="submit" name="Submit">
 
