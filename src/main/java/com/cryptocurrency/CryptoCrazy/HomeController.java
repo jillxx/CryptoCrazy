@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
+import com.cryptocurrency.CryptoCrazy.dao.LeaderboardRepo;
 import com.cryptocurrency.CryptoCrazy.model.Crypto;
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
-
-import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
 
 
 
@@ -27,9 +27,12 @@ import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
 public class HomeController {
 	public static double moneyOnHold;
 	public static int counter;
+	public static Leaderboard lb;
 	
+//	@Autowired
+//	public LeaderboardDao leaderdao;
 	@Autowired
-	public LeaderboardDao dao;
+	LeaderboardRepo lp;
 
 	@RequestMapping("/") // can get either getmapping or requestmapping not postmapping here tho
 	public ModelAndView index() {
@@ -41,10 +44,21 @@ public class HomeController {
 	
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
-		Leaderboard l = new Leaderboard(name, mode);
-		dao.add(l);
 		moneyOnHold = 1000.0;
-		counter = 3;
+		//adding new player to the leader board
+		lb = new Leaderboard(name, moneyOnHold,mode);
+		lp.save(lb);
+		//set up the allowed loop number based on mode 
+		if(mode.equalsIgnoreCase("easy")) {
+			counter = 3;	
+		}else if(mode.equalsIgnoreCase("medium")) {
+			counter = 5;
+		}else if(mode.equals("difficult")){
+			counter = 7;
+		}else {
+			counter = (int)Integer.MAX_VALUE;//FIXME: not working.infinity number
+		}
+		
 		return new ModelAndView("index");
 	}
 
@@ -164,6 +178,12 @@ public class HomeController {
 		double percentChange = ((pricedifference) / pricestart) * 100;
 		moneyOnHold = moneyOnHold + moneyOnHold *(pricedifference) / pricestart;
 		counter--;
+		System.out.println(counter);
+		//update the leaderboard
+		lb.setScore(moneyOnHold);
+		lp.save(lb);
+			
+		
 		if(counter == 0) {
 			return new ModelAndView ("leaderboard");
 		}
@@ -178,7 +198,7 @@ public class HomeController {
 
 			Long date = formatter.parse(str_date).getTime();
 			Long timeStampDate = date / 1000;
-			System.out.println(timeStampDate);
+		
 			return timeStampDate;
 		} catch (ParseException e) {
 			System.out.println("Exception :" + e);
