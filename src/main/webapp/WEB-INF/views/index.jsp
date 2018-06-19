@@ -14,11 +14,6 @@
 	<br> Sell price: ${priceend }
 	<br> Percentage change: ${percent }%
 	<br> Your Money: ${money }
-	<br>
-purchase price	${pricestart }<br>
-sell price ${priceend }<br>
-percent change ${percent }%<br>
-Your Money ${money }
 <br>
 	<h1>Select your Cryptocurrency:</h1>
 
