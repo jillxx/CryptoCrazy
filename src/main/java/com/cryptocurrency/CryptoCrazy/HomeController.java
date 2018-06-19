@@ -1,5 +1,6 @@
 package com.cryptocurrency.CryptoCrazy;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +29,7 @@ import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
 
 @Controller
 public class HomeController {
-	public static double moneyOnHold;
+	public static BigDecimal moneyOnHold = new BigDecimal("1000.00");
 	public static int counter;
 	public static Leaderboard lb;
 	
@@ -47,7 +48,8 @@ public class HomeController {
 	
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
-		moneyOnHold = 1000.0;
+		System.out.println(moneyOnHold);
+		moneyOnHold.setScale(2, BigDecimal.ROUND_HALF_UP);
 		//adding new player to the leader board
 		lb = new Leaderboard(name, moneyOnHold,mode);
 		lp.save(lb);
@@ -178,6 +180,7 @@ public class HomeController {
 		}
 		
 		//direct back to the index page if 
+	
 		String emessage = currencyType + "did not exist on "+ date1;
 		if(pricestart == 0.0) {
 			ModelAndView mverror = new ModelAndView("index");
@@ -187,9 +190,17 @@ public class HomeController {
 		
 		
 		//difference between two prices
+		BigDecimal pricestartB = BigDecimal.valueOf(pricestart);
+		System.out.println(pricestartB);
 		double pricedifference = priceend - pricestart;
 		double percentChange = ((pricedifference) / pricestart) * 100;
-		moneyOnHold = moneyOnHold + moneyOnHold *(pricedifference) / pricestart;
+		//casting the double price to big decimal 
+		
+		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
+		System.out.println("pricediff "+pricediff);
+		BigDecimal percentage =BigDecimal.valueOf(percentChange);
+		System.out.println("percentage " +percentage);
+		moneyOnHold = moneyOnHold.add(moneyOnHold.multiply(pricediff).divide(pricestartB));
 		System.out.println("moneyonhold"+moneyOnHold);
 		counter--;
 		System.out.println(counter);
@@ -200,9 +211,11 @@ public class HomeController {
 		if(counter == 0) {
 			List<Leaderboard> leaderBoard = new ArrayList<>();
 			leaderBoard = lp.findAll();
+			Collections.sort(leaderBoard);
+			Collections.reverse(leaderBoard);
 			return new ModelAndView("leaderboard","leaderlist", leaderBoard);
 		}
-		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentChange).addObject("money",moneyOnHold).addObject("counter", counter);
+		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentage).addObject("money",moneyOnHold).addObject("counter", counter);
 
 	}
 

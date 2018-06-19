@@ -1,6 +1,7 @@
 package com.cryptocurrency.CryptoCrazy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,10 @@ public class LeaderboardController {
 	public ModelAndView index() {
 		List<Leaderboard> leaderBoard = new ArrayList<>();
 		leaderBoard = lr.findAll();
+		Collections.sort(leaderBoard);
+		Collections.reverse(leaderBoard);
 		System.out.println(leaderBoard);
-		ModelAndView mv = new ModelAndView("leaderboard"); // page of the jsp that should be returned
+		ModelAndView mv = new ModelAndView("leaderboard","leaderlist", leaderBoard); // page of the jsp that should be returned
 
 		return mv;
 	
