@@ -1,8 +1,12 @@
 package com.cryptocurrency.CryptoCrazy;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -16,20 +20,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
+import com.cryptocurrency.CryptoCrazy.dao.LeaderboardRepo;
 import com.cryptocurrency.CryptoCrazy.model.Crypto;
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
-
-import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
 
 
 
 @Controller
 public class HomeController {
-	public static double moneyOnHold;
+	public static BigDecimal moneyOnHold = new BigDecimal("1000.00");
 	public static int counter;
+	public static Leaderboard lb;
 	
+//	@Autowired
+//	public LeaderboardDao leaderdao;
 	@Autowired
-	public LeaderboardDao dao;
+	LeaderboardRepo lp;
 
 	@RequestMapping("/") // can get either getmapping or requestmapping not postmapping here tho
 	public ModelAndView index() {
@@ -41,10 +48,22 @@ public class HomeController {
 	
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
-		Leaderboard l = new Leaderboard(name, mode);
-		dao.add(l);
-		moneyOnHold = 1000.0;
-		counter = 3;
+		System.out.println(moneyOnHold);
+		moneyOnHold.setScale(2, BigDecimal.ROUND_HALF_UP);
+		//adding new player to the leader board
+		lb = new Leaderboard(name, moneyOnHold,mode);
+		lp.save(lb);
+		//set up the allowed loop number based on mode 
+		if(mode.equalsIgnoreCase("easy")) {
+			counter = 3;	
+		}else if(mode.equalsIgnoreCase("medium")) {
+			counter = 5;
+		}else if(mode.equalsIgnoreCase("difficult")){
+			counter = 7;
+		}else {
+			counter = (int)Integer.MAX_VALUE;//FIXME: not working.infinity number
+		}
+		
 		return new ModelAndView("index");
 	}
 
@@ -159,15 +178,44 @@ public class HomeController {
 			priceend = price2.getBody().getXRP().getUSD();
 			break;
 		}
+		
+		//direct back to the index page if 
+	
+		String emessage = currencyType + "did not exist on "+ date1;
+		if(pricestart == 0.0) {
+			ModelAndView mverror = new ModelAndView("index");
+			return mverror.addObject("errormessage", emessage).addObject("money",moneyOnHold).addObject("counter", counter);
+		}
+	
+		
+		
 		//difference between two prices
+		BigDecimal pricestartB = BigDecimal.valueOf(pricestart);
+		System.out.println(pricestartB);
 		double pricedifference = priceend - pricestart;
 		double percentChange = ((pricedifference) / pricestart) * 100;
-		moneyOnHold = moneyOnHold + moneyOnHold *(pricedifference) / pricestart;
+		//casting the double price to big decimal 
+		
+		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
+		System.out.println("pricediff "+pricediff);
+		BigDecimal percentage =BigDecimal.valueOf(percentChange);
+		System.out.println("percentage " +percentage);
+		moneyOnHold = moneyOnHold.add(moneyOnHold.multiply(pricediff).divide(pricestartB));
+		System.out.println("moneyonhold"+moneyOnHold);
 		counter--;
+		System.out.println(counter);
+		//update the leaderboard
+		lb.setScore(moneyOnHold);
+		lp.save(lb);
+			
 		if(counter == 0) {
-			return new ModelAndView ("leaderboard");
+			List<Leaderboard> leaderBoard = new ArrayList<>();
+			leaderBoard = lp.findAll();
+			Collections.sort(leaderBoard);
+			Collections.reverse(leaderBoard);
+			return new ModelAndView("leaderboard","leaderlist", leaderBoard);
 		}
-		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentChange).addObject("money",moneyOnHold);
+		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentage).addObject("money",moneyOnHold).addObject("counter", counter);
 
 	}
 
@@ -178,7 +226,7 @@ public class HomeController {
 
 			Long date = formatter.parse(str_date).getTime();
 			Long timeStampDate = date / 1000;
-			System.out.println(timeStampDate);
+		
 			return timeStampDate;
 		} catch (ParseException e) {
 			System.out.println("Exception :" + e);

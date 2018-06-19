@@ -1,15 +1,20 @@
 package com.cryptocurrency.CryptoCrazy.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
+
 @Entity
 @Table(name = "leaderboard")
 
-public class Leaderboard {
+public class Leaderboard implements Comparable<Leaderboard> {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +22,7 @@ public class Leaderboard {
 	
 	private int id;
 	private String name;
-	private double score;
+	private BigDecimal score;
 	private String mode;
 	
 	public Leaderboard() {
@@ -26,11 +31,19 @@ public class Leaderboard {
 	
 	
 
-	public Leaderboard(String name, String mode) {
+
+
+
+	public Leaderboard(String name, BigDecimal score, String mode) {
 		super();
 		this.name = name;
+		this.score = score;
 		this.mode = mode;
 	}
+
+
+
+
 
 
 	public int getId() {
@@ -49,11 +62,11 @@ public class Leaderboard {
 		this.name = name;
 	}
 
-	public double getScore() {
+	public BigDecimal getScore() {
 		return score;
 	}
 
-	public void setScore(double score) {
+	public void setScore(BigDecimal score) {
 		this.score = score;
 	}
 
@@ -73,6 +86,12 @@ public class Leaderboard {
 	}
 	
 	
+	@Override
+	public int compareTo(Leaderboard l) {
+		
+		return getScore().compareTo(l.getScore());
+	}
+
 	
 
 }
