@@ -40,7 +40,7 @@ h2, span {
 	text: white;
 	font-size: 35px;
 	padding: 15px 32px;
-	border-radius: 35%;
+
 }
 
 
@@ -56,7 +56,7 @@ h2, span {
 	<br>
 <div class="container" align="center" >
 	<form name="date-form" action="pricechange"	onsubmit="return checkDate()">
-		<select class ="buttonstyle" name="cryptocurrency">
+		<select class ="buttonstyle" name="currency">
 			<option value="BTC">Bitcoin[BTC]</option>
 			<option value="ETH">Ethereum[ETH]</option>
 			<option value="XRP">Ripple[XRP]</option>
@@ -83,23 +83,23 @@ h2, span {
  		<br>
 		<h2>Purchase Date:</h2>
 		
-		<input type="date" name="date1"  min="2000-01-02" max="2018-06-19">
+		<input type="date" name="date1"  min="2000-01-02" max="2018-06-19" required>
 		<br>
 		<br>
 		<h2>Sell Date:</h2>
-		<input type="date" name="date2" min="2000-01-02" max="2018-06-19"> 
+		<input type="date" name="date2" min="2000-01-02" max="2018-06-19" required> 
 		<br> <br> <br>
-		<input class="buttonstyle" type="submit" name="Submit">
+		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" name="Submit">
 
 	</form>
 	
 	${errormessage }
 	</div>
-<%-- <br> Purchase price: ${pricestart }
+<br> Purchase price: ${pricestart }
 	<br> Sell price: ${priceend }
 	<br> Percentage change: ${percent }%
 	<br> Your Money: ${money }
-	<br> Remaining Buys/Sells: ${counter }  --%>
+	<br> Remaining Buys/Sells: ${counter }
 
 
 <script type="text/javascript" src="js/file.js"></script>
