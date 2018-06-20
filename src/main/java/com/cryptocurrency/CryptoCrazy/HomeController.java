@@ -1,6 +1,8 @@
 package com.cryptocurrency.CryptoCrazy;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cryptocurrency.CryptoCrazy.dao.LeaderboardDao;
 import com.cryptocurrency.CryptoCrazy.dao.LeaderboardRepo;
 import com.cryptocurrency.CryptoCrazy.model.Crypto;
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
@@ -64,7 +65,7 @@ public class HomeController {
 	
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
-		System.out.println(moneyOnHold);
+		
 		moneyOnHold.setScale(2, BigDecimal.ROUND_HALF_UP);
 		//adding new player to the leader board
 		lb = new Leaderboard(name, moneyOnHold,mode);
@@ -206,18 +207,27 @@ public class HomeController {
 		
 		
 		//difference between two prices
-		BigDecimal pricestartB = BigDecimal.valueOf(pricestart);
-		System.out.println(pricestartB);
 		double pricedifference = priceend - pricestart;
-		double percentChange = ((pricedifference) / pricestart) * 100;
+		System.out.println(pricedifference);
+		double percentChange = ((pricedifference) / pricestart) + 1;
+	
 		//casting the double price to big decimal 
-		
 		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
-		System.out.println("pricediff "+pricediff);
+	
+		// casting to number has two decimal places
 		BigDecimal percentage =BigDecimal.valueOf(percentChange);
-		System.out.println("percentage " +percentage);
-		moneyOnHold = moneyOnHold.add(moneyOnHold.multiply(pricediff).divide(pricestartB));
-		System.out.println("moneyonhold"+moneyOnHold);
+		System.out.println("percentage: "+percentage);
+		System.out.println("original money: "+ moneyOnHold);
+		//calculate the money left after this investment loop.
+		moneyOnHold= moneyOnHold.multiply(percentage).setScale(2,RoundingMode.HALF_UP);
+		System.out.println("moneyonhold: "+moneyOnHold);
+		
+		//casting percentage difference format
+		BigDecimal percentagechange = percentage.subtract(new BigDecimal("1")); 
+		percentagechange = percentagechange.scaleByPowerOfTen(2).setScale(2, RoundingMode.HALF_UP);
+		System.out.println("percentagechange: " +percentagechange);
+		
+		
 		counter--;
 		System.out.println(counter);
 		//update the leaderboard
@@ -231,7 +241,9 @@ public class HomeController {
 			Collections.reverse(leaderBoard);
 			return new ModelAndView("leaderboard","leaderlist", leaderBoard);
 		}
-		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentage).addObject("money",moneyOnHold).addObject("counter", counter);
+		
+		//String test = "price start is: "+ pricestart;
+		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentagechange).addObject("money",moneyOnHold).addObject("counter", counter);
 
 	}
 
