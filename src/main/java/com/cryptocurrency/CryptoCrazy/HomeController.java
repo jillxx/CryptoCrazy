@@ -192,7 +192,8 @@ public class HomeController {
 		
 		//difference between two prices
 		double pricedifference = priceend - pricestart;
-		double percentChange = ((pricedifference) / pricestart);
+		System.out.println(pricedifference);
+		double percentChange = ((pricedifference) / pricestart) + 1;
 	
 		//casting the double price to big decimal 
 		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
@@ -200,14 +201,15 @@ public class HomeController {
 		// casting to number has two decimal places
 		BigDecimal percentage =BigDecimal.valueOf(percentChange);
 		System.out.println("percentage: "+percentage);
-		
+		System.out.println("original money: "+ moneyOnHold);
 		//calculate the money left after this investment loop.
-		moneyOnHold= moneyOnHold.add(moneyOnHold.multiply(percentage)).setScale(2,RoundingMode.HALF_UP);
+		moneyOnHold= moneyOnHold.multiply(percentage).setScale(2,RoundingMode.HALF_UP);
 		System.out.println("moneyonhold: "+moneyOnHold);
 		
-		//casting percentage format
-		percentage = percentage.scaleByPowerOfTen(2).setScale(2, RoundingMode.HALF_UP);
-		System.out.println(percentage);
+		//casting percentage difference format
+		BigDecimal percentagechange = percentage.subtract(new BigDecimal("1")); 
+		percentagechange = percentagechange.scaleByPowerOfTen(2).setScale(2, RoundingMode.HALF_UP);
+		System.out.println("percentagechange: " +percentagechange);
 		
 		
 		counter--;
@@ -225,7 +227,7 @@ public class HomeController {
 		}
 		
 		//String test = "price start is: "+ pricestart;
-		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentage).addObject("money",moneyOnHold).addObject("counter", counter);
+		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentagechange).addObject("money",moneyOnHold).addObject("counter", counter);
 
 	}
 
