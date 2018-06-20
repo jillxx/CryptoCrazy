@@ -57,26 +57,26 @@ h2, span {
 <div class="container" align="center" >
 	<form name="date-form" action="pricechange"	onsubmit="return checkDate()">
 		<select class ="buttonstyle" name="currency">
-			<option value="BTC">Bitcoin[BTC]</option>
-			<option value="ETH">Ethereum[ETH]</option>
-			<option value="XRP">Ripple[XRP]</option>
-			<option value="BCH">BitcoinCash[BCH]</option>
-			<option value="EOS">EOS</option>
-			<option value="LTC">Litecoin</option>
-			<option value="XLM">XLM</option>
-			<option value="ADA">ADA</option>
-			<option value="IOT">IOT</option>
-			<option value="TRX">TRX</option>
-			<option value="USDT">USDT</option>
-			<option value="NEO">NEO</option>
-			<option value="DASH">DASH</option>
-			<option value="XMR">Monero</option>
-			<option value="XEM">XEM</option>
-			<option value="BNB">BNB</option>
-			<option value="VEN">VEN</option>
-			<option value="ETC">ETC</option>
-			<option value="QTUM">QTUM</option>
-			<option value="OMG">OMG</option>
+			<option value="BTC">Bitcoin (BTC)</option>
+			<option value="ETH">Ethereum (ETH)</option>
+			<option value="XRP">Ripple (XRP)</option>
+			<option value="BCH">Bitcoin Cash (BCH)</option>
+			<option value="EOS">EOS (EOS)</option>
+			<option value="LTC">Litecoin (LTC)</option>
+			<option value="XLM">Stellar (XLM)</option>
+			<option value="ADA">Cardano (ADA)</option>
+			<option value="IOT">IOTA (IOT)</option>
+			<option value="TRX">Tron (TRX)</option>
+			<option value="USDT">Tether (USDT)</option>
+			<option value="NEO">NEO (NEO)</option>
+			<option value="DASH">Dash (DASH)</option>
+			<option value="XMR">Monero (XMR)</option>
+			<option value="XEM">NEM (XEM)</option>
+			<option value="BNB">Binance Coin (BNB)</option>
+			<option value="VEN">VeChain (VEN)</option>
+			<option value="ETC">Ethereum Classic (ETC)</option>
+			<option value="QTUM">Qtum (QTUM)</option>
+			<option value="OMG">OmiseGO (OMG)</option>
 		</select>
  		<br>
  		<br>
