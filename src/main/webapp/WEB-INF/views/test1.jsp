@@ -47,25 +47,8 @@ p {
 	<h1>You Lost Your Cash!!</h1>
 	<br>
 	<br>
-	<!-- <form action = "addplayer">
-	<div class="container">
-	<span>Your Name:</span> <br><input type="text" class="form-control form-rounded" name="name" style="width: 200px; height: 40px;">
 	
 	
-	<span>Select Mode:</span> 
-	<br>
-			<select name="mode" style="width: 100px; height: 40px;">
-			
-			<option value="Easy">Easy</option>
-			<option value="Medium">Medium</option>
-			<option value="Difficult">Difficult</option>
-			<option value="Survival">Survival</option>
-
-		</select>
-		<br>
-		<br>
-		<input class="btn btn-warning" type="submit" value="Submit"  style="width: 80px;">
-	</form> -->
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

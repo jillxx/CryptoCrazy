@@ -44,7 +44,7 @@ p {
 <body>
 <br>
 <br>
-	<h1>CrYpTo-Ca$h Or CrAsH!!</h1>
+	<h1>Crypto-Ca$h or Crash!</h1>
 	<br>
 	<br>
 	<form action = "addplayer">

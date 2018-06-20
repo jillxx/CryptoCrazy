@@ -46,6 +46,22 @@ public class HomeController {
 
 	}
 	
+	@RequestMapping("/test1") // can get either getmapping or requestmapping not postmapping here tho
+	public ModelAndView test1() {
+		ModelAndView mv = new ModelAndView("test1"); // page of the jsp that should be returned
+		
+		return mv;
+
+	}
+	
+	@RequestMapping("/test2") // can get either getmapping or requestmapping not postmapping here tho
+	public ModelAndView test2() {
+		ModelAndView mv = new ModelAndView("test2"); // page of the jsp that should be returned
+		
+		return mv;
+
+	}
+	
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
 		System.out.println(moneyOnHold);
