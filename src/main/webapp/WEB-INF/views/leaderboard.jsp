@@ -25,8 +25,13 @@ h1 {
     font-family: Impact;
 }
 
-p {
-    
+table {
+	opacity:0.8;
+	background-color: black;
+    color: #d0c066;
+    margin: 0px auto;
+    padding: 15px 15px;
+    font-weight: bold;
     
 }
 
@@ -37,14 +42,9 @@ p {
 
 </head>
 <body>
-<h1>CrYpTo-CrAzY  Leaderboard</h1>
-
-
-
-
 <h1>LEADERBOARD</h1>
 
-		<table class="table" border="1">
+		<table class="table" border="2">
 			<thead class="thead">
 				<tr>
 					<th>Name</th>

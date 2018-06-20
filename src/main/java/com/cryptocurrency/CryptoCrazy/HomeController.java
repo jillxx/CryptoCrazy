@@ -219,8 +219,10 @@ public class HomeController {
 		lp.save(lb);
 			
 		if(counter == 0) {
+			//show differnet list base on mode
 			List<Leaderboard> leaderBoard = new ArrayList<>();
-			leaderBoard = lp.findAll();
+			leaderBoard = lp.findByMode(lb.getMode());
+			
 			Collections.sort(leaderBoard);
 			Collections.reverse(leaderBoard);
 			return new ModelAndView("leaderboard","leaderlist", leaderBoard);
