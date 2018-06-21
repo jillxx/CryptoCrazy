@@ -10,19 +10,20 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<title>Index</title>
+<title>lostmoney</title>
 <style>
 
 
 body
+
  {
- 	background: url("images/Babycash.gif") no-repeat center fixed;
+ 	background: url("images/MoneyByeBye.gif") no-repeat center fixed;
  	background-size: cover;
     
 }
 
 h1, span {
-    color: darkgreen;
+    color: red;
     text-shadow: 2px 1px black;
     text-align: center;
     font-size: 80px;
@@ -30,29 +31,42 @@ h1, span {
 }
 
  h2, span {
-	color: darkgreen;
+	color: red;
     text-shadow: 2px 1px black;
     text-align: center;
     font-size: 40px;
     font-family: Impact;
-} 
+}  
 
+.buttonstyle {
+	color: red;
+	text: black;
+	
+	
+	font-size: 35px;
+	padding: 15px 32px;
 
+}
 
 
 </style>
 </head>
 <body>
+<div class="container" align="center" >
 <br>
 <br>
-	<h1>You Made Some Cash!!</h1>
+	<h1>You Lost Your Cash!!</h1>
 	<br>
 	<br>
+	
 	<br> <h2>Purchase price: ${pricestart }</h2>
 	<br> <h2>Sell price: ${priceend }</h2>
 	<br> <h2>Percentage change: ${percent }%</h2>
 	<br> <h2>Your Money: ${money }</h2>
 	<br> <h2>Remaining Buys/Sells: ${counter }</h2>
+	<br> <br> <br>
+	
+		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" value="Continue">
 	
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

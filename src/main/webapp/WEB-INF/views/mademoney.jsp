@@ -16,13 +16,13 @@
 
 body
  {
- 	background: url("images/MoneyByeBye.gif") no-repeat center fixed;
+ 	background: url("images/Babycash.gif") no-repeat center fixed;
  	background-size: cover;
     
 }
 
 h1, span {
-    color: red;
+    color: darkgreen;
     text-shadow: 2px 1px black;
     text-align: center;
     font-size: 80px;
@@ -30,34 +30,42 @@ h1, span {
 }
 
  h2, span {
-	color: red;
+	color: darkgreen;
     text-shadow: 2px 1px black;
     text-align: center;
     font-size: 40px;
     font-family: Impact;
-}  
+} 
 
-p {
-    
-    
+.buttonstyle {
+	color: darkgreen;
+	text: white;
+	
+	
+	font-size: 35px;
+	padding: 15px 32px;
+
 }
+
+
 
 
 </style>
 </head>
 <body>
+<div class="container" align="center" >
 <br>
 <br>
-	<h1>You Lost Your Cash!!</h1>
+	<h1>You Made Some Cash!!</h1>
 	<br>
 	<br>
-	
 	<br> <h2>Purchase price: ${pricestart }</h2>
 	<br> <h2>Sell price: ${priceend }</h2>
 	<br> <h2>Percentage change: ${percent }%</h2>
 	<br> <h2>Your Money: ${money }</h2>
 	<br> <h2>Remaining Buys/Sells: ${counter }</h2>
-	
+	<br><br><br>
+	<input style= "border-radius: 35%;" class="buttonstyle" type="submit" value="Continue">
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -97,11 +97,11 @@ h2, span {
 	
 	${errormessage }
 	</div>
-<br> Purchase price: ${pricestart }
+<%-- <br> Purchase price: ${pricestart }
 	<br> Sell price: ${priceend }
 	<br> Percentage change: ${percent }%
 	<br> Your Money: ${money }
-	<br> Remaining Buys/Sells: ${counter }
+	<br> Remaining Buys/Sells: ${counter } --%>
 
 
 <script type="text/javascript" src="js/file.js"></script>
