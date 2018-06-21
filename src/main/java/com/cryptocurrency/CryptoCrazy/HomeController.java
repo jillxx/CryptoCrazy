@@ -198,7 +198,7 @@ public class HomeController {
 		
 		//direct back to the index page if 
 	
-		String emessage = currencyType + "did not exist on "+ date1;
+		String emessage = "No price data available for " + currencyType + " on "+ date1 + ".";
 	
 		
 		if(pricestart == 0.0) {
