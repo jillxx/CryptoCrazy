@@ -260,6 +260,11 @@ public class HomeController {
 		
 
 	}
+	
+	@RequestMapping("continue")
+	public ModelAndView cont () {
+		return new ModelAndView("index");
+	}
 
 	// date type transfer method
 	public static Long convertStringToTimestamp(String str_date) {

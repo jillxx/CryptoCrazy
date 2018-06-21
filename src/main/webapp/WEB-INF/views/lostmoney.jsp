@@ -41,8 +41,6 @@ h1, span {
 .buttonstyle {
 	color: red;
 	text: black;
-	
-	
 	font-size: 35px;
 	padding: 15px 32px;
 
@@ -66,7 +64,7 @@ h1, span {
 	<br> <h2>Remaining Buys/Sells: ${counter }</h2>
 	<br> <br> <br>
 	
-		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" value="Continue">
+		<a href="/continue" style="border-radius: 35%;" class="buttonstyle"><button>Continue</button></a>
 	
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
