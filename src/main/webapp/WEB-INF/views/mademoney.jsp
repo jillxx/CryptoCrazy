@@ -37,12 +37,23 @@ h1, span {
     font-family: Impact;
 } 
 
+.buttonstyle {
+	color: darkgreen;
+	text: white;
+	
+	
+	font-size: 35px;
+	padding: 15px 32px;
+
+}
+
 
 
 
 </style>
 </head>
 <body>
+<div class="container" align="center" >
 <br>
 <br>
 	<h1>You Made Some Cash!!</h1>
@@ -53,7 +64,8 @@ h1, span {
 	<br> <h2>Percentage change: ${percent }%</h2>
 	<br> <h2>Your Money: ${money }</h2>
 	<br> <h2>Remaining Buys/Sells: ${counter }</h2>
-	
+	<br><br><br>
+	<input style= "border-radius: 35%;" class="buttonstyle" type="submit" value="Continue">
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

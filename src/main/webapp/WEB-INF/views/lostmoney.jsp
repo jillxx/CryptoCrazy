@@ -10,11 +10,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<title>Index</title>
+<title>lostmoney</title>
 <style>
 
 
 body
+
  {
  	background: url("images/MoneyByeBye.gif") no-repeat center fixed;
  	background-size: cover;
@@ -37,15 +38,21 @@ h1, span {
     font-family: Impact;
 }  
 
-p {
-    
-    
+.buttonstyle {
+	color: red;
+	text: black;
+	
+	
+	font-size: 35px;
+	padding: 15px 32px;
+
 }
 
 
 </style>
 </head>
 <body>
+<div class="container" align="center" >
 <br>
 <br>
 	<h1>You Lost Your Cash!!</h1>
@@ -57,6 +64,9 @@ p {
 	<br> <h2>Percentage change: ${percent }%</h2>
 	<br> <h2>Your Money: ${money }</h2>
 	<br> <h2>Remaining Buys/Sells: ${counter }</h2>
+	<br> <br> <br>
+	
+		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" value="Continue">
 	
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
