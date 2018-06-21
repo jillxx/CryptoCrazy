@@ -47,26 +47,12 @@ public class HomeController {
 
 	}
 	
-//	@RequestMapping("/mademoney") // can get either getmapping or requestmapping not postmapping here tho
-//	public ModelAndView mademoney() {
-//		ModelAndView mv = new ModelAndView("mademoney"); // page of the jsp that should be returned
-//		
-//		return mv;
-//
-//	}
-//	
-//	@RequestMapping("/test2") // can get either getmapping or requestmapping not postmapping here tho
-//	public ModelAndView test2() {
-//		ModelAndView mv = new ModelAndView("test2"); // page of the jsp that should be returned
-//		
-//		return mv;
-//
-//	}
 	
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
 		
 		moneyOnHold.setScale(2, BigDecimal.ROUND_HALF_UP);
+		System.out.println(moneyOnHold);
 		//adding new player to the leader board
 		lb = new Leaderboard(name, moneyOnHold,mode);
 		lp.save(lb);
