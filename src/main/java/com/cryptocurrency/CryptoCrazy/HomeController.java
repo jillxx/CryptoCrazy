@@ -199,6 +199,8 @@ public class HomeController {
 		//direct back to the index page if 
 	
 		String emessage = currencyType + "did not exist on "+ date1;
+	
+		
 		if(pricestart == 0.0) {
 			ModelAndView mverror = new ModelAndView("index");
 			return mverror.addObject("errormessage", emessage).addObject("money",moneyOnHold).addObject("counter", counter);
