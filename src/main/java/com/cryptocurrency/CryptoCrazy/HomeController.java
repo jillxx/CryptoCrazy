@@ -243,7 +243,9 @@ public class HomeController {
 			
 			Collections.sort(leaderBoard);
 			Collections.reverse(leaderBoard);
-			return new ModelAndView("leaderboard","leaderlist", leaderBoard);
+			ModelAndView mvl = new ModelAndView("leaderboard");
+			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode());
+			return mvl;
 		}
 		
 		//String test = "price start is: "+ pricestart;

@@ -25,6 +25,7 @@ h1 {
     font-family: Impact;
 }
 
+
 table {
 	opacity:0.8;
 	background-color: black;
@@ -43,28 +44,29 @@ table {
 </head>
 <body>
 <h1>LEADERBOARD</h1>
-
+<br>
+<h1 style = "font-size: 35px;">Mode: ${mode}</h1>
 		<table class="table" border="2">
 			<thead class="thead">
 				<tr>
+					<th> </th>
 					<th>Name</th>
 					<th>Score</th>
-					<th>Mode</th>
+					
 		
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="leader" items="${leaderlist}">
+				<c:forEach begin="1" end="20" var="leader" varStatus="loop" items="${leaderlist}">
 					<tr>
+						<td>${loop.index }</td>
 						<td>${leader.name}</td>
 						<td>${leader.score}</td>
-						<td>${leader.mode}</td>
 					
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-
 
 </body>
 
