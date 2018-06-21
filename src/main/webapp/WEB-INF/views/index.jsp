@@ -84,6 +84,8 @@ h2, span {
 		<h2>Purchase Date:</h2>
 		
 		<input type="date" name="date1"  min="2000-01-02" max="2018-06-19" required>
+		<p id="invaliddate"></p>
+		
 		<br>
 		<br>
 		<h2>Sell Date:</h2>
@@ -91,7 +93,7 @@ h2, span {
 		<br> <br> <br>
 		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" name="Submit">
 
-	</form>
+	</form>	
 	
 	${errormessage }
 	</div>
