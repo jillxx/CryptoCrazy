@@ -1,9 +1,9 @@
 package com.cryptocurrency.CryptoCrazy;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,21 +47,21 @@ public class HomeController {
 
 	}
 	
-	@RequestMapping("/test1") // can get either getmapping or requestmapping not postmapping here tho
-	public ModelAndView test1() {
-		ModelAndView mv = new ModelAndView("test1"); // page of the jsp that should be returned
-		
-		return mv;
-
-	}
-	
-	@RequestMapping("/test2") // can get either getmapping or requestmapping not postmapping here tho
-	public ModelAndView test2() {
-		ModelAndView mv = new ModelAndView("test2"); // page of the jsp that should be returned
-		
-		return mv;
-
-	}
+//	@RequestMapping("/mademoney") // can get either getmapping or requestmapping not postmapping here tho
+//	public ModelAndView mademoney() {
+//		ModelAndView mv = new ModelAndView("mademoney"); // page of the jsp that should be returned
+//		
+//		return mv;
+//
+//	}
+//	
+//	@RequestMapping("/test2") // can get either getmapping or requestmapping not postmapping here tho
+//	public ModelAndView test2() {
+//		ModelAndView mv = new ModelAndView("test2"); // page of the jsp that should be returned
+//		
+//		return mv;
+//
+//	}
 	
 	@RequestMapping("addplayer")
 	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
@@ -215,7 +215,10 @@ public class HomeController {
 	
 		//casting the double price to big decimal 
 		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
-	
+		
+		
+		
+		
 		// casting to number has two decimal places
 		BigDecimal percentage =BigDecimal.valueOf(percentChange);
 		System.out.println("percentage: "+percentage);
@@ -246,10 +249,29 @@ public class HomeController {
 			ModelAndView mvl = new ModelAndView("leaderboard");
 			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode());
 			return mvl;
+			
+			
 		}
 		
 		//String test = "price start is: "+ pricestart;
-		return mv.addObject("pricestart", pricestart).addObject("priceend",priceend).addObject("percent", percentagechange).addObject("money",moneyOnHold).addObject("counter", counter);
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
+		String moneyString1 = formatter.format(pricestart);
+		String moneyString2 = formatter.format(priceend);
+		String moneyString3 = formatter.format(moneyOnHold);
+		
+		if (pricedifference > 0) {
+			ModelAndView view1 = new ModelAndView("mademoney");
+			
+			return view1.addObject("pricestart", moneyString1).addObject("priceend",moneyString2).addObject("percent", percentagechange).addObject("money", moneyString3).addObject("counter", counter);
+			
+		}
+		
+		
+		else {
+			ModelAndView view2 = new ModelAndView("lostmoney");
+			return view2.addObject("pricestart", moneyString1).addObject("priceend",moneyString2).addObject("percent", percentagechange).addObject("money",moneyString3).addObject("counter", counter);
+		}
+		
 
 	}
 
