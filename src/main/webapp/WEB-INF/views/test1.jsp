@@ -29,9 +29,13 @@ h1, span {
     font-family: Impact;
 }
 
-/* h2, span {
-	font-size: 40px;
-}  */
+ h2, span {
+	color: red;
+    text-shadow: 2px 1px black;
+    text-align: center;
+    font-size: 40px;
+    font-family: Impact;
+}  
 
 p {
     
@@ -48,6 +52,11 @@ p {
 	<br>
 	<br>
 	
+	<br> <h2>Purchase price: ${pricestart }</h2>
+	<br> <h2>Sell price: ${priceend }</h2>
+	<br> <h2>Percentage change: ${percent }%</h2>
+	<br> <h2>Your Money: ${money }</h2>
+	<br> <h2>Remaining Buys/Sells: ${counter }</h2>
 	
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
