@@ -195,10 +195,15 @@ public class HomeController {
 			System.out.println("before"+ session.getAttribute("endDate"));
 			if(timeStampStart <= Long.valueOf(session.getAttribute("endDate").toString())) {
 				ModelAndView mverror = new ModelAndView("index");
-				String emessage = "you can go backward! chose a date after"+ date2;
-				System.out.println("The start time is before the last end date");
-						return mverror.addObject("errormessage", emessage).addObject("money", moneyOnHold).addObject("counter",
-								counter);
+				
+				//transfer the timeStamp to date for error message
+				java.util.Date dateTime=new java.util.Date((long)session.getAttribute("endDate")*1000);
+				System.out.println("showed date " + dateTime);
+				DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+			
+				String emessage = "You can't go backwards! Your last sell date was "+ f.format(dateTime) +".";
+				//System.out.println("The start time is before the last end date");
+						return mverror.addObject("errormessage", emessage);
 			}
 			model.addAttribute("endDate", timeStampEnd);
 		}
@@ -208,8 +213,7 @@ public class HomeController {
 		if (pricestart == 0.0) {
 			ModelAndView mverror = new ModelAndView("index");
 			String emessage = "No price data available for " + currencyType + " on " + date1 + ".";
-			return mverror.addObject("errormessage", emessage).addObject("money", moneyOnHold).addObject("counter",
-					counter);
+			return mverror.addObject("errormessage", emessage);
 		}
 
 		// difference between two prices
@@ -239,18 +243,6 @@ public class HomeController {
 		lb.setScore(moneyOnHold);
 		lp.save(lb);
 
-		if (counter == 0) {
-			// show differnet list base on mode
-			List<Leaderboard> leaderBoard = new ArrayList<>();
-			leaderBoard = lp.findByMode(lb.getMode());
-
-			Collections.sort(leaderBoard);
-			Collections.reverse(leaderBoard);
-			ModelAndView mvl = new ModelAndView("leaderboard");
-			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode());
-			return mvl;
-
-		}
 
 		// String test = "price start is: "+ pricestart;
 		NumberFormat formatter = NumberFormat.getCurrencyInstance();
@@ -278,6 +270,21 @@ public class HomeController {
 
 	@RequestMapping("continue")
 	public ModelAndView cont() {
+		if (counter == 0) {
+			// show different list base on mode
+			List<Leaderboard> leaderBoard = new ArrayList<>();
+			leaderBoard = lp.findByMode(lb.getMode());
+
+			Collections.sort(leaderBoard);
+			Collections.reverse(leaderBoard);
+			
+			
+			ModelAndView mvl = new ModelAndView("leaderboard");
+			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode());
+			return mvl;
+
+		}
+
 		return new ModelAndView("index");
 	}
 
