@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionBindingListener;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,8 +20,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,53 +31,54 @@ import com.cryptocurrency.CryptoCrazy.dao.LeaderboardRepo;
 import com.cryptocurrency.CryptoCrazy.model.Crypto;
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
 
-
-
 @Controller
+// @SessionAttributes is used on a controller to designate which model attributes should be stored in the session.
+@SessionAttributes("endDate")
 public class HomeController {
 	public static BigDecimal moneyOnHold = new BigDecimal("1000.00");
 	public static int counter;
 	public static Leaderboard lb;
-	
-//	@Autowired
-//	public LeaderboardDao leaderdao;
+	public static int dateCounter;
+
+	// @Autowired
+	// public LeaderboardDao leaderdao;
 	@Autowired
 	LeaderboardRepo lp;
 
 	@RequestMapping("/") // can get either getmapping or requestmapping not postmapping here tho
-	public ModelAndView index() {
+	public ModelAndView index(HttpSession session, Model model) {
+		dateCounter = 0;
 		ModelAndView mv = new ModelAndView("welcome"); // page of the jsp that should be returned
 		
 		return mv;
 
 	}
-	
-	
+
 	@RequestMapping("addplayer")
-	public ModelAndView addPlayer(@RequestParam("name") String name,@RequestParam("mode")String mode) {
-		
+	public ModelAndView addPlayer(@RequestParam("name") String name, @RequestParam("mode") String mode) {
+
 		moneyOnHold.setScale(2, BigDecimal.ROUND_HALF_UP);
-		System.out.println(moneyOnHold);
-		//adding new player to the leader board
-		lb = new Leaderboard(name, moneyOnHold,mode);
+		// System.out.println(moneyOnHold);
+		// adding new player to the leader board
+		lb = new Leaderboard(name, moneyOnHold, mode);
 		lp.save(lb);
-		//set up the allowed loop number based on mode 
-		if(mode.equalsIgnoreCase("easy")) {
-			counter = 3;	
-		}else if(mode.equalsIgnoreCase("medium")) {
+		// set up the allowed loop number based on mode
+		if (mode.equalsIgnoreCase("easy")) {
+			counter = 3;
+		} else if (mode.equalsIgnoreCase("medium")) {
 			counter = 5;
-		}else if(mode.equalsIgnoreCase("difficult")){
+		} else if (mode.equalsIgnoreCase("difficult")) {
 			counter = 7;
-		}else {
-			counter = (int)Integer.MAX_VALUE;//FIXME: not working.infinity number
+		} else {
+			counter = (int) Integer.MAX_VALUE;// FIXME: not working.infinity number
 		}
-		
+
 		return new ModelAndView("index");
 	}
 
 	@RequestMapping("pricechange")
 	public ModelAndView priceChange(@RequestParam("currency") String currencyType, @RequestParam("date1") String date1,
-			@RequestParam("date2") String date2) {
+			@RequestParam("date2") String date2, HttpSession session, Model model) {
 
 		// calling the method to convert the date string to a long timestamp
 		Long timeStampStart = convertStringToTimestamp(date1);
@@ -181,88 +187,97 @@ public class HomeController {
 			priceend = price2.getBody().getXRP().getUSD();
 			break;
 		}
-		
-		//direct back to the index page if 
-	
-		String emessage = "No price data available for " + currencyType + " on "+ date1 + ".";
-	
-		
-		if(pricestart == 0.0) {
-			ModelAndView mverror = new ModelAndView("index");
-			return mverror.addObject("errormessage", emessage).addObject("money",moneyOnHold).addObject("counter", counter);
+
+	// direct back to the index page if	date is before the previous date.
+		if(dateCounter == 0) {
+			model.addAttribute("endDate", timeStampEnd);
+		}else {
+			System.out.println("before"+ session.getAttribute("endDate"));
+			if(timeStampStart <= Long.valueOf(session.getAttribute("endDate").toString())) {
+				ModelAndView mverror = new ModelAndView("index");
+				String emessage = "you can go backward! chose a date after"+ date2;
+				System.out.println("The start time is before the last end date");
+						return mverror.addObject("errormessage", emessage).addObject("money", moneyOnHold).addObject("counter",
+								counter);
+			}
+			model.addAttribute("endDate", timeStampEnd);
 		}
-	
-		
-		
-		//difference between two prices
+		dateCounter++;
+
+
+		if (pricestart == 0.0) {
+			ModelAndView mverror = new ModelAndView("index");
+			String emessage = "No price data available for " + currencyType + " on " + date1 + ".";
+			return mverror.addObject("errormessage", emessage).addObject("money", moneyOnHold).addObject("counter",
+					counter);
+		}
+
+		// difference between two prices
 		double pricedifference = priceend - pricestart;
-		System.out.println(pricedifference);
+		System.out.println("pricedifference: "+pricedifference);
 		double percentChange = ((pricedifference) / pricestart) + 1;
-	
-		//casting the double price to big decimal 
+
+		// casting the double price to big decimal
 		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
-		
-		
-		
-		
+
 		// casting to number has two decimal places
-		BigDecimal percentage =BigDecimal.valueOf(percentChange);
-		System.out.println("percentage: "+percentage);
-		System.out.println("original money: "+ moneyOnHold);
-		//calculate the money left after this investment loop.
-		moneyOnHold= moneyOnHold.multiply(percentage).setScale(2,RoundingMode.HALF_UP);
-		System.out.println("moneyonhold: "+moneyOnHold);
-		
-		//casting percentage difference format
-		BigDecimal percentagechange = percentage.subtract(new BigDecimal("1")); 
+		BigDecimal percentage = BigDecimal.valueOf(percentChange);
+		System.out.println("percentage: " + percentage);
+		System.out.println("original money: " + moneyOnHold);
+		// calculate the money left after this investment loop.
+		moneyOnHold = moneyOnHold.multiply(percentage).setScale(2, RoundingMode.HALF_UP);
+		System.out.println("moneyonhold: " + moneyOnHold);
+
+		// casting percentage difference format
+		BigDecimal percentagechange = percentage.subtract(new BigDecimal("1"));
 		percentagechange = percentagechange.scaleByPowerOfTen(2).setScale(2, RoundingMode.HALF_UP);
-		System.out.println("percentagechange: " +percentagechange);
-		
-		
+		System.out.println("percentagechange: " + percentagechange);
+
 		counter--;
 		System.out.println(counter);
-		//update the leaderboard
+		// update the pojo
 		lb.setScore(moneyOnHold);
 		lp.save(lb);
-			
-		if(counter == 0) {
-			//show differnet list base on mode
+
+		if (counter == 0) {
+			// show differnet list base on mode
 			List<Leaderboard> leaderBoard = new ArrayList<>();
 			leaderBoard = lp.findByMode(lb.getMode());
-			
+
 			Collections.sort(leaderBoard);
 			Collections.reverse(leaderBoard);
 			ModelAndView mvl = new ModelAndView("leaderboard");
 			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode());
 			return mvl;
-			
-			
+
 		}
-		
-		//String test = "price start is: "+ pricestart;
+
+		// String test = "price start is: "+ pricestart;
 		NumberFormat formatter = NumberFormat.getCurrencyInstance();
 		String moneyString1 = formatter.format(pricestart);
 		String moneyString2 = formatter.format(priceend);
 		String moneyString3 = formatter.format(moneyOnHold);
-		
+
 		if (pricedifference > 0) {
 			ModelAndView view1 = new ModelAndView("mademoney");
-			
-			return view1.addObject("pricestart", moneyString1).addObject("priceend",moneyString2).addObject("percent", percentagechange).addObject("money", moneyString3).addObject("counter", counter);
-			
+
+			return view1.addObject("pricestart", moneyString1).addObject("priceend", moneyString2)
+					.addObject("percent", percentagechange).addObject("money", moneyString3)
+					.addObject("counter", counter);
+
 		}
-		
-		
+
 		else {
 			ModelAndView view2 = new ModelAndView("lostmoney");
-			return view2.addObject("pricestart", moneyString1).addObject("priceend",moneyString2).addObject("percent", percentagechange).addObject("money",moneyString3).addObject("counter", counter);
+			return view2.addObject("pricestart", moneyString1).addObject("priceend", moneyString2)
+					.addObject("percent", percentagechange).addObject("money", moneyString3)
+					.addObject("counter", counter);
 		}
-		
 
 	}
-	
+
 	@RequestMapping("continue")
-	public ModelAndView cont () {
+	public ModelAndView cont() {
 		return new ModelAndView("index");
 	}
 
@@ -273,14 +288,14 @@ public class HomeController {
 
 			Long date = formatter.parse(str_date).getTime();
 			Long timeStampDate = date / 1000;
-		
+
 			return timeStampDate;
 		} catch (ParseException e) {
 			System.out.println("Exception :" + e);
 			return null;
 		}
 	}
-	
 
-	
+	// determine if the date is not backward
+
 }
