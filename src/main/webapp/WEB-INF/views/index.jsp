@@ -59,14 +59,13 @@ h3, span {
 </head>
 <body>
 
-<div class="container" align="center">
-		<div class="row">
-		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12"></div> 
-			<div class="col-lg-8 col-md-4 col-sm-6 col-xs-12">
 
-				<form action="addplayer"
-					style="margin-bottom: 0x; background: rgba(0, 0, 0, 0.5)"
-					class="form-control form-rounded">
+		<div class="row">
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" ></div> 
+			<div class="col-lg-8 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 0x; background: rgba(0, 0, 0, 0.5)" class="form-control form-rounded">
+
+
+<div class="container" align="center" >
 	<br>
 	<br>
 	<h1>Select Your Cryptocurrency:</h1>
@@ -76,8 +75,7 @@ h3, span {
 	<h3>Make sure they are in consecutive order!</h3>
 	<h3>Player starts with $1,000</h3>
 	<br>
-<div class="container" align="center" >
-	<form name="date-form" action="pricechange"	onsubmit="return checkDate()">
+	<form name="date-form" action="pricechange"	onsubmit="return checkDate()" >
 		<select class ="buttonstyle" name="currency">
 			<option value="BTC">Bitcoin (BTC)</option>
 			<option value="ETH">Ethereum (ETH)</option>
@@ -117,7 +115,7 @@ h3, span {
 	</form>	
 	
 	${errormessage }
-	</form>
+	
 			</div>
 		</div>
 	</div>

@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionBindingListener;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -284,8 +283,10 @@ public class HomeController {
 			Collections.reverse(leaderBoard);
 			
 			
+			BigDecimal percentage = moneyOnHold.divide(new BigDecimal(10.0));
+			System.out.println(percentage);
 			ModelAndView mvl = new ModelAndView("leaderboard");
-			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode());
+			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode()).addObject("finalmoney",moneyOnHold).addObject("percentage",percentage);
 			return mvl;
 
 		}
