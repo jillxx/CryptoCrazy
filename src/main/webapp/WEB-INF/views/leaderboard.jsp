@@ -45,7 +45,7 @@ table {
 <body>
 <h1>LEADERBOARD</h1>
 <br>
-<h1 style = "font-size: 35px;">Mode: ${mode}</h1>
+<h1 style = "font-size: 35px;"> ${mode}</h1>
 		<table class="table" border="2">
 			<thead class="thead">
 				<tr>
@@ -67,6 +67,12 @@ table {
 				</c:forEach>
 			</tbody>
 		</table>
+		
+<%-- 		<br><h1> Purchase price: ${pricestart }</h1>
+	<br><h1>Sell price: ${priceend }</h1>
+	<br><h1>Percentage change: ${percent }%</h1> 
+	<br><h1>Your Money: ${money }</h1>
+	 --%>
 
 </body>
 

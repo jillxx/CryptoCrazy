@@ -14,13 +14,13 @@
 
 body
  {
- 	background: url("images/purple.gif") no-repeat center fixed;
+ 	background: url("images/digital2.gif") no-repeat center fixed;
  	background-size: cover;
     
 }
 
 h1, span {
-    color: purple;
+    color: #d0c066;
     text-shadow: 3px 2px black;
     text-align: center;
     font-size: 75px;
@@ -28,15 +28,24 @@ h1, span {
 }
 
 h2, span {
-	color: purple;
+	color: #d0c066;
     text-shadow: 2px 1px black;
     text-align: center;
     font-size: 45px;
     font-family: Impact;
 }
 
+h3, span {
+	color: #d0c066;
+    text-align: center;
+    font-size: 35px;
+    text-shadow: 2px 1px black;
+    font-family: Impact;
+}
+
 .buttonstyle {
-	color: purple;
+	color: #d0c066;
+	
 	text: white;
 	font-size: 35px;
 	padding: 15px 32px;
@@ -49,10 +58,23 @@ h2, span {
 <title>Index</title>
 </head>
 <body>
+
+<div class="container" align="center">
+		<div class="row">
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12"></div> 
+			<div class="col-lg-8 col-md-4 col-sm-6 col-xs-12">
+
+				<form action="addplayer"
+					style="margin-bottom: 0x; background: rgba(0, 0, 0, 0.5)"
+					class="form-control form-rounded">
 	<br>
 	<br>
 	<h1>Select Your Cryptocurrency:</h1>
 	<br>
+	
+	<h3>Go back in time, select your buy and sell dates.</h3>
+	<h3>Make sure they are in consecutive order!</h3>
+	<h3>Player starts with $1,000</h3>
 	<br>
 <div class="container" align="center" >
 	<form name="date-form" action="pricechange"	onsubmit="return checkDate()">
@@ -79,15 +101,14 @@ h2, span {
 			<option value="OMG">OmiseGO (OMG)</option>
 		</select>
  		<br>
- 		<br>
+ 		
  		<br>
 		<h2>Purchase Date:</h2>
 		
 		<input type="date" name="date1"  min="2000-01-02" max="2018-06-19" required>
 		<p id="invaliddate"></p>
 		
-		<br>
-		<br>
+	
 		<h2>Sell Date:</h2>
 		<input type="date" name="date2" min="2000-01-02" max="2018-06-19" required> 
 		<br> <br> <br>
@@ -96,7 +117,11 @@ h2, span {
 	</form>	
 	
 	${errormessage }
+	</form>
+			</div>
+		</div>
 	</div>
+	
 <%-- <br> Purchase price: ${pricestart }
 	<br> Sell price: ${priceend }
 	<br> Percentage change: ${percent }%

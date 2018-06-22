@@ -41,6 +41,7 @@ public class HomeController {
 
 	@RequestMapping("/") // can get either getmapping or requestmapping not postmapping here tho
 	public ModelAndView index() {
+		moneyOnHold = new BigDecimal("1000.00");
 		ModelAndView mv = new ModelAndView("welcome"); // page of the jsp that should be returned
 		
 		return mv;
