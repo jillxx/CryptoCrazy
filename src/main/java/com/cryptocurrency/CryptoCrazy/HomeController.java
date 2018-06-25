@@ -48,8 +48,6 @@ public class HomeController {
 
 	public ModelAndView index() {
 		moneyOnHold = new BigDecimal("1000.00");
-
-	 
 		dateCounter = 0;
 
 		ModelAndView mv = new ModelAndView("welcome"); // page of the jsp that should be returned
@@ -200,7 +198,7 @@ public class HomeController {
 			if(timeStampStart <= Long.valueOf(session.getAttribute("endDate").toString())) {
 				ModelAndView mverror = new ModelAndView("index");
 				
-				//transfer the timeStamp to date for error message
+				//transfer the timeStamp to formated date for error message
 				java.util.Date dateTime=new java.util.Date((long)session.getAttribute("endDate")*1000);
 				System.out.println("showed date " + dateTime);
 				DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -283,7 +281,7 @@ public class HomeController {
 			Collections.reverse(leaderBoard);
 			
 			
-			BigDecimal percentage = moneyOnHold.divide(new BigDecimal(10.0));
+			BigDecimal percentage = moneyOnHold.divide(new BigDecimal(10.0)).subtract(new BigDecimal(100.00));
 			System.out.println(percentage);
 			ModelAndView mvl = new ModelAndView("leaderboard");
 			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode()).addObject("finalmoney",moneyOnHold).addObject("percentage",percentage);
