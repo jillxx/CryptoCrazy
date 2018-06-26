@@ -66,7 +66,7 @@ td {
 			<h1>Your achievement!</h1>
 			<br>
 			<h3>Money you left with:</h3>
-			<br><h3>${finalmoney}</h3>
+			<br><h3>${finalmoney}</h3> 
 			<br>
 			<h3>You investment changed  ${percentage }%.</h3>
 			<br>

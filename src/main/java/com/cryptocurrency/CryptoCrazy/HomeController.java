@@ -31,7 +31,8 @@ import com.cryptocurrency.CryptoCrazy.model.Crypto;
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
 
 @Controller
-// @SessionAttributes is used on a controller to designate which model attributes should be stored in the session.
+// @SessionAttributes is used on a controller to designate which model
+// attributes should be stored in the session.
 @SessionAttributes("endDate")
 public class HomeController {
 	public static BigDecimal moneyOnHold = new BigDecimal("1000.00");
@@ -51,7 +52,7 @@ public class HomeController {
 		dateCounter = 0;
 
 		ModelAndView mv = new ModelAndView("welcome"); // page of the jsp that should be returned
-		
+
 		return mv;
 
 	}
@@ -81,6 +82,7 @@ public class HomeController {
 	@RequestMapping("pricechange")
 	public ModelAndView priceChange(@RequestParam("currency") String currencyType, @RequestParam("date1") String date1,
 			@RequestParam("date2") String date2, HttpSession session, Model model) {
+		int currencyid = 0;
 
 		// calling the method to convert the date string to a long timestamp
 		Long timeStampStart = convertStringToTimestamp(date1);
@@ -111,106 +113,134 @@ public class HomeController {
 		case "ADA":
 			pricestart = price1.getBody().getADA().getUSD();
 			priceend = price2.getBody().getADA().getUSD();
+			currencyid = 321992;
 			break;
 		case "BCH":
 			pricestart = price1.getBody().getBCH().getUSD();
 			priceend = price2.getBody().getBCH().getUSD();
+			currencyid = 202330;
 			break;
 		case "BTC":
 			pricestart = price1.getBody().getBTC().getUSD();
 			priceend = price2.getBody().getBTC().getUSD();
+			currencyid = 1182;
 			break;
 		case "BNB":
 			pricestart = price1.getBody().getBNB().getUSD();
 			priceend = price2.getBody().getBNB().getUSD();
+			currencyid = 60622;
 			break;
 		case "DASH":
 			pricestart = price1.getBody().getDASH().getUSD();
 			priceend = price2.getBody().getDASH().getUSD();
+			currencyid = 3807;
 			break;
 		case "EOS":
 			pricestart = price1.getBody().getEOS().getUSD();
 			priceend = price2.getBody().getEOS().getUSD();
+			currencyid = 166503;
 			break;
 		case "ETC":
 			pricestart = price1.getBody().getETC().getUSD();
 			priceend = price2.getBody().getETC().getUSD();
+			currencyid = 5324;
 			break;
 		case "ETH":
 			pricestart = price1.getBody().getETH().getUSD();
 			priceend = price2.getBody().getETH().getUSD();
+			currencyid = 7605;
 			break;
 		case "IOT":
 			pricestart = price1.getBody().getIOT().getUSD();
 			priceend = price2.getBody().getIOT().getUSD();
+			currencyid = 127356;
 			break;
 		case "LTC":
 			pricestart = price1.getBody().getLTC().getUSD();
 			priceend = price2.getBody().getLTC().getUSD();
+			currencyid = 3808;
 			break;
 		case "NEO":
 			pricestart = price1.getBody().getNEO().getUSD();
 			priceend = price2.getBody().getNEO().getUSD();
+			currencyid = 27368;
 			break;
 		case "OMG":
 			pricestart = price1.getBody().getOMG().getUSD();
 			priceend = price2.getBody().getOMG().getUSD();
+			currencyid = 187440;
 			break;
 		case "QTUM":
 			pricestart = price1.getBody().getQTUM().getUSD();
 			priceend = price2.getBody().getQTUM().getUSD();
+			currencyid = 112392;
 			break;
 		case "TRX":
 			pricestart = price1.getBody().getTRX().getUSD();
 			priceend = price2.getBody().getTRX().getUSD();
+			currencyid = 310829;
 			break;
 		case "USDT":
 			pricestart = price1.getBody().getUSDT().getUSD();
 			priceend = price2.getBody().getUSDT().getUSD();
+			currencyid = 171986;
 			break;
 		case "VEN":
 			pricestart = price1.getBody().getVEN().getUSD();
 			priceend = price2.getBody().getVEN().getUSD();
+			currencyid = 236131;
 			break;
 		case "XEM":
 			pricestart = price1.getBody().getXEM().getUSD();
 			priceend = price2.getBody().getXEM().getUSD();
+			currencyid = 5285;
 			break;
 		case "XLM":
 			pricestart = price1.getBody().getXLM().getUSD();
 			priceend = price2.getBody().getXLM().getUSD();
+			currencyid = 4614;
 			break;
 		case "XMR":
 			pricestart = price1.getBody().getXMR().getUSD();
 			priceend = price2.getBody().getXMR().getUSD();
+			currencyid = 5038;
 			break;
 		case "XRP":
 			pricestart = price1.getBody().getXRP().getUSD();
 			priceend = price2.getBody().getXRP().getUSD();
+			currencyid = 5031;
 			break;
 		}
 
-	// direct back to the index page if	date is before the previous date.
-		if(dateCounter == 0) {
+		// getting all the information from the snapshot url
+		ResponseEntity<Crypto> currencydetail = restTemplate.exchange(
+				"https://www.cryptocompare.com/api/data/coinsnapshotfullbyid/?id=" + currencyid, HttpMethod.GET, entity,
+				Crypto.class);
+		String name = currencydetail.getBody().getData().getGeneral().getName();
+		String imageUrl = currencydetail.getBody().getData().getGeneral().getImageUrl();
+		String description = currencydetail.getBody().getData().getGeneral().getDescription();
+		String startDate = currencydetail.getBody().getData().getGeneral().getStartDate();
+
+		// direct back to the index page if date is before the previous date.
+		if (dateCounter == 0) {
 			model.addAttribute("endDate", timeStampEnd);
-		}else {
-			System.out.println("before"+ session.getAttribute("endDate"));
-			if(timeStampStart <= Long.valueOf(session.getAttribute("endDate").toString())) {
+		} else {
+			System.out.println("before" + session.getAttribute("endDate"));
+			if (timeStampStart <= Long.valueOf(session.getAttribute("endDate").toString())) {
 				ModelAndView mverror = new ModelAndView("index");
-				
-				//transfer the timeStamp to formated date for error message
-				java.util.Date dateTime=new java.util.Date((long)session.getAttribute("endDate")*1000);
+
+				// transfer the timeStamp to formated date for error message
+				java.util.Date dateTime = new java.util.Date((long) session.getAttribute("endDate") * 1000);
 				System.out.println("showed date " + dateTime);
 				DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-			
-				String emessage = "You can't go backwards! Your last sell date was "+ f.format(dateTime) +".";
-				//System.out.println("The start time is before the last end date");
-						return mverror.addObject("errormessage", emessage);
+
+				String emessage = "You can't go backwards! Your last sell date was " + f.format(dateTime) + ".";
+				// System.out.println("The start time is before the last end date");
+				return mverror.addObject("errormessage", emessage);
 			}
 			model.addAttribute("endDate", timeStampEnd);
 		}
 		dateCounter++;
-
 
 		if (pricestart == 0.0) {
 			ModelAndView mverror = new ModelAndView("index");
@@ -220,7 +250,7 @@ public class HomeController {
 
 		// difference between two prices
 		double pricedifference = priceend - pricestart;
-		System.out.println("pricedifference: "+pricedifference);
+		System.out.println("pricedifference: " + pricedifference);
 		double percentChange = ((pricedifference) / pricestart) + 1;
 
 		// casting the double price to big decimal
@@ -245,7 +275,6 @@ public class HomeController {
 		lb.setScore(moneyOnHold);
 		lp.save(lb);
 
-
 		// String test = "price start is: "+ pricestart;
 		NumberFormat formatter = NumberFormat.getCurrencyInstance();
 		String moneyString1 = formatter.format(pricestart);
@@ -257,7 +286,8 @@ public class HomeController {
 
 			return view1.addObject("pricestart", moneyString1).addObject("priceend", moneyString2)
 					.addObject("percent", percentagechange).addObject("money", moneyString3)
-					.addObject("counter", counter);
+					.addObject("counter", counter).addObject("name", name).addObject("image", imageUrl)
+					.addObject("description", description).addObject("startdate", startDate);
 
 		}
 
@@ -265,7 +295,8 @@ public class HomeController {
 			ModelAndView view2 = new ModelAndView("lostmoney");
 			return view2.addObject("pricestart", moneyString1).addObject("priceend", moneyString2)
 					.addObject("percent", percentagechange).addObject("money", moneyString3)
-					.addObject("counter", counter);
+					.addObject("counter", counter).addObject("name", name).addObject("image", imageUrl)
+					.addObject("description", description).addObject("startdate", startDate);
 		}
 
 	}
@@ -279,12 +310,12 @@ public class HomeController {
 
 			Collections.sort(leaderBoard);
 			Collections.reverse(leaderBoard);
-			
-			
+
 			BigDecimal percentage = moneyOnHold.divide(new BigDecimal(10.0)).subtract(new BigDecimal(100.00));
 			System.out.println(percentage);
 			ModelAndView mvl = new ModelAndView("leaderboard");
-			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode()).addObject("finalmoney",moneyOnHold).addObject("percentage",percentage);
+			mvl.addObject("leaderlist", leaderBoard).addObject("mode", lb.getMode())
+					.addObject("finalmoney", moneyOnHold).addObject("percentage", percentage);
 			return mvl;
 
 		}

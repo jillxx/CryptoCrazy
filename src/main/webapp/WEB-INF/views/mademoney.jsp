@@ -17,7 +17,6 @@
 <title>Index</title>
 <style>
 body {
-	background: url("images/Babycash.gif") no-repeat center fixed;
 	background-size: cover;
 }
 
@@ -43,26 +42,64 @@ h2, span {
 	font-size: 35px;
 	padding: 15px 32px;
 }
+
+.row {
+	display: flex;
+}
+
+.column {
+	flex: 30%;
+}
 </style>
 </head>
 <body>
 	<div class="container" align="center">
-		<br> <br>
-		<h1>You Made Some Cash!!</h1>
-		<br> <br> <br>
-		<h2>Purchase price: ${pricestart }</h2>
-		<br>
-		<h2>Sell price: ${priceend }</h2>
-		<br>
-		<h2>Percentage change: ${percent }%</h2>
-		<br>
-		<h2>Your Money: ${money }</h2>
-		<br>
-		<h2>Remaining Buys/Sells: ${counter }</h2>
-		<br>
-		<br>
-		<br> 
-			<a href="/continue" style="border-radius: 35%;" class="buttonstyle"><button>Continue</button></a>
+		<div class="row">
+			<div class="column">
+				<br> <br>
+				<h1>You Made Some Cash!!</h1>
+				<br> <br> <br>
+				<h2>Purchase price: ${pricestart }</h2>
+				<br>
+				<h2>Sell price: ${priceend }</h2>
+				<br>
+				<h2>Percentage change: ${percent }%</h2>
+				<br>
+				<h2>Your Money: ${money }</h2>
+				<br>
+				<h2>Remaining Buys/Sells: ${counter }</h2>
+				<br> <br> <br> <a href="/continue"
+					style="border-radius: 35%;" class="buttonstyle"><button>Continue</button></a>
+			</div>
+			<div class="column">
+				<h4>
+					You invested in <img src="${image }" alt="logo" width="50"
+						height="50"> ${name } 
+						<br>
+						Currency Start Date: ${startdate }
+				</h4>
+				<!-- collapse function -->
+				<div class="container">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#collapse1">Currency
+										Description</a>
+								</h4>
+							</div>
+							<div id="collapse1" class="panel-collapse collapse">
+								<div class="panel-body">${description }</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="column">${startdate }</div>
+
+		</div>
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->

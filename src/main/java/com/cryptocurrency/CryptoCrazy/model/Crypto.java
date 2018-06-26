@@ -46,6 +46,16 @@ public class Crypto {
 	private QTUM QTUM;
 	@JsonProperty("OMG")
 	private OMG OMG;
+	@JsonProperty("Data")
+	private Data Data;
+
+	public Data getData() {
+		return Data;
+	}
+
+	public void setData(Data data) {
+		Data = data;
+	}
 
 	public Crypto() {
 		// TODO Auto-generated constructor stub
