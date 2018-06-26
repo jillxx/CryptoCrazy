@@ -35,6 +35,20 @@ h2 {
 	text-align: center;
 	font-size: 40px;
 	font-family: Impact;
+	background-color: white;
+  	 width: 33%;
+  	 height: 150px;
+  	 border-radius: 5px;
+  	 font-size: 27px;
+  	 padding: 5px;
+  	 margin:5px;
+}
+h3{
+	color: #d0c066;
+	text-shadow: 2px 1px black;
+	text-align: center;
+	font-size: 40px;
+	font-family: Impact;
 }
 
 .buttonstyle {
@@ -71,13 +85,14 @@ h2 {
 			<br> <br>
 			<h1>You Made Some Cash!!</h1>
 			<br>
+	<div class="container" style="display:flex">		
 			<h2>Purchase price: ${pricestart }</h2>
 			<h2>Sell price: ${priceend }</h2>
-			<br>
 			<h2>Percentage change: ${percent }%</h2>
-			<h2>Your Money: ${money }</h2>
+   </div>
+			<h3>Your Money: ${money }</h2>
 			<br>
-			<h2>Remaining Buys/Sells: ${counter }</h2>
+			<h3>Remaining Buys/Sells: ${counter }</h2>
 			<br> <br> <a href="/continue">
 				<button class="buttonstyle">Continue</button>
 			</a>
@@ -86,7 +101,7 @@ h2 {
 
 		<div class="column boxbgrd">
 			<div id="target"
-				style="overflow: scroll; width: 300px; height: 400px;">${link }</div>
+				style="overflow: scroll; width: 300px; height: 700px;">${link }</div>
 		</div>
 	</div>
 
