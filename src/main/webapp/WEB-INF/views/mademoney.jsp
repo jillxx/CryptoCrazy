@@ -30,8 +30,7 @@ h1 {
 }
 
 h2 {
-	color: #d0c066;
-	text-shadow: 2px 1px black;
+	color: darkolivegreen;
 	text-align: center;
 	font-size: 40px;
 	font-family: Impact;
@@ -72,7 +71,7 @@ h3{
 	<div class="container" align="center" style="display:flex">
 		<div class="column" id="boxbgrd2">
 			<h4>
-				You invested in <img src="${image }" alt="logo" width="50"
+				You invested in <br><img src="${image }" alt="logo" width="50"
 					height="50"> ${name } <br>
 			</h4>
 			<div id="target"
@@ -89,6 +88,7 @@ h3{
 			<h2>Sell price: ${priceend }</h2>
 			<h2>Percentage change: ${percent }%</h2>
    </div>
+   <br>
 			<h3>Your Money: ${money }</h2>
 			<br>
 			<h3>Remaining Buys/Sells: ${counter }</h2>
