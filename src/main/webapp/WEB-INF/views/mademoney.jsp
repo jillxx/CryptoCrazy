@@ -20,7 +20,7 @@ body {
 	background-size: cover;
 }
 
-h1, span {
+h1 {
 	color: darkgreen;
 	text-shadow: 2px 1px black;
 	text-align: center;
@@ -28,7 +28,7 @@ h1, span {
 	font-family: Impact;
 }
 
-h2, span {
+h2 {
 	color: darkgreen;
 	text-shadow: 2px 1px black;
 	text-align: center;
@@ -72,12 +72,13 @@ h2, span {
 					style="border-radius: 35%;" class="buttonstyle"><button>Continue</button></a>
 			</div>
 			<div class="column">
-				<h4>
-					You invested in <img src="${image }" alt="logo" width="50"
-						height="50"> ${name } 
-						<br>
-						Currency Start Date: ${startdate }
-				</h4>
+				<div class="container">
+					<h4>
+						You invested in <br> <img src="${image }" alt="logo"
+							width="50" height="50"> ${name } <br> Currency Start
+						Date: ${startdate }
+					</h4>
+				</div>
 				<!-- collapse function -->
 				<div class="container">
 					<div class="panel-group">
@@ -97,7 +98,9 @@ h2, span {
 				</div>
 			</div>
 
-			<div class="column">${startdate }</div>
+			<div class="column">
+			<a class="twitter-timeline" href="https://twitter.com/TheBitcoinNews?ref_src=twsrc%5Etfw">Tweets by TheBitcoinNews</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</div>
 
 		</div>
 

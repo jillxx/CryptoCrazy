@@ -21,7 +21,7 @@ body {
 	background-size: cover;
 }
 
-h1, span {
+h1{
 	color: red;
 	text-shadow: 2px 1px black;
 	text-align: center;
@@ -29,7 +29,7 @@ h1, span {
 	font-family: Impact;
 }
 
-h2, span {
+h2{
 	color: red;
 	text-shadow: 2px 1px black;
 	text-align: center;
