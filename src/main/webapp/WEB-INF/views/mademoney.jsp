@@ -21,10 +21,8 @@ body {
 	background-size: cover;
 }
 
-
-h1  {
+h1 {
 	color: #d0c066;
-
 	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 60px;
@@ -32,10 +30,7 @@ h1  {
 }
 
 h2 {
-
-
 	color: #d0c066;
-
 	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 40px;
@@ -58,23 +53,17 @@ h2 {
 	flex: 30%;
 }
 
-.boxbgrd
-{
-background: rgba(0, 0, 0, 0.5);
-padding: 10px 10px;
-margin: 40px auto;	
-
-
+.boxbgrd {
+	background: rgba(0, 0, 0, 0.5);
+	padding: 10px 10px;
+	margin: 40px auto;
 }
 
- #boxbgrd2
-{
-background: rgba(192, 1929, 192, 0.80);
-padding: 10px 10px;
-margin: 40px auto;	
-
-
-} 
+#boxbgrd2 {
+	background: rgba(192, 1929, 192, 0.80);
+	padding: 10px 10px;
+	margin: 40px auto;
+}
 </style>
 </head>
 <body>
@@ -83,26 +72,23 @@ margin: 40px auto;
 			<div class="column boxbgrd" color="#d0c066">
 				<br> <br>
 				<h1>You Made Some Cash!!</h1>
-				<br> <br> 
-				<h2>Purchase price: ${pricestart }</h2>
 				<br>
-				<h2>Sell price: ${priceend }</h2>
+				<h2>Purchase price: ${pricestart }</h2>			   	<h2>Sell price: ${priceend }</h2>
 				<br>
-				<h2>Percentage change: ${percent }%</h2>
-				<br>
-				<h2>Your Money: ${money }</h2>
+				<h2>Percentage change: ${percent }%</h2>			<h2>Your Money: ${money }</h2>
 				<br>
 				<h2>Remaining Buys/Sells: ${counter }</h2>
-				<br> <br> <a href="/continue" >
-					<button class="buttonstyle" >Continue</button></a>
+				<br> <br> <a href="/continue">
+					<button class="buttonstyle">Continue</button>
+				</a>
 			</div>
-
+		</div>
+		<div class="row">
 			<div class="column" id="boxbgrd2">
 				<h4>
 					You invested in <img src="${image }" alt="logo" width="50"
-						height="50"> ${name } 
-						<br>
-						Currency Start Date: ${startdate }
+						height="50"> ${name } <br> Currency Start Date:
+					${startdate }
 				</h4>
 				<!-- collapse function -->
 				<div class="container">
@@ -124,11 +110,9 @@ margin: 40px auto;
 			</div>
 
 			<div class="column boxbgrd">
-			
-			
-			<div id="target" style="overflow: scroll; width: 350px; height: 1000px;">
-            ${link }
-            </div>
+				<div id="target"
+					style="overflow: scroll; width: 560px; height: 500px;">
+					${link }</div>
 			</div>
 		</div>
 
