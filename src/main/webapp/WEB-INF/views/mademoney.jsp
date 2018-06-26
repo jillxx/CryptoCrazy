@@ -55,31 +55,17 @@ h2 {
 </style>
 </head>
 <body>
-	<div class="container" align="center" style="display: flex">
+	<div class="container" align="center" style="display:flex">
 		<div class="column" id="boxbgrd2">
 			<h4>
 				You invested in <img src="${image }" alt="logo" width="50"
 					height="50"> ${name } <br> Currency Start Date:
 				${startdate }
 			</h4>
-			<!-- collapse function -->
-			<div class="container">
-				<div class="panel-group">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#collapse1">Currency
-									Description</a>
-							</h4>
-						</div>
-						<div id="collapse1" class="panel-collapse collapse">
-							<div class="panel-body">${description }</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
+			<div id="target"
+				style="overflow: scroll; width: 300px; height: 450px;">${description }</div>
 		</div>
+
 		<div class="column boxbgrd">
 
 			<br> <br>
@@ -97,11 +83,11 @@ h2 {
 			</a>
 
 		</div>
-	</div>
-	<div class="column boxbgrd">
-		<div id="target"
-			style="overflow: scroll; width: 300px; height: 500px;">${link }</div>
-	</div>
+
+		<div class="column boxbgrd">
+			<div id="target"
+				style="overflow: scroll; width: 300px; height: 400px;">${link }</div>
+		</div>
 	</div>
 
 
