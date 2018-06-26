@@ -17,11 +17,17 @@
 <title>Index</title>
 <style>
 body {
+	background: url("images/coolcoin.gif") no-repeat center fixed;
 	background-size: cover;
 }
 
+<<<<<<< HEAD
 h1 {
 	color: darkgreen;
+=======
+h1  {
+	color: #d0c066;
+>>>>>>> 0b7da4b3e4b4bf0255f8e5ac50996862df76acfd
 	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 80px;
@@ -29,7 +35,11 @@ h1 {
 }
 
 h2 {
+<<<<<<< HEAD
 	color: darkgreen;
+=======
+	color: #d0c066;
+>>>>>>> 0b7da4b3e4b4bf0255f8e5ac50996862df76acfd
 	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 40px;
@@ -37,7 +47,7 @@ h2 {
 }
 
 .buttonstyle {
-	color: darkgreen;
+	color: #d0c066;
 	text: white;
 	font-size: 35px;
 	padding: 15px 32px;
@@ -50,12 +60,21 @@ h2 {
 .column {
 	flex: 30%;
 }
+
+#boxbgrd
+{
+background: rgba(0, 0, 0, 0.5);
+padding: 10px 10px;
+margin: 40px auto;	
+
+
+}
 </style>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="left">
 		<div class="row">
-			<div class="column">
+			<div class="column" id="boxbgrd" color="#d0c066">
 				<br> <br>
 				<h1>You Made Some Cash!!</h1>
 				<br> <br> <br>
@@ -71,14 +90,14 @@ h2 {
 				<br> <br> <br> <a href="/continue"
 					style="border-radius: 35%;" class="buttonstyle"><button>Continue</button></a>
 			</div>
-			<div class="column">
-				<div class="container">
-					<h4>
-						You invested in <br> <img src="${image }" alt="logo"
-							width="50" height="50"> ${name } <br> Currency Start
-						Date: ${startdate }
-					</h4>
-				</div>
+
+			<div class="column" id="boxbgrd">
+				<h4>
+					You invested in <img src="${image }" alt="logo" width="50"
+						height="50"> ${name } 
+						<br>
+						Currency Start Date: ${startdate }
+				</h4>
 				<!-- collapse function -->
 				<div class="container">
 					<div class="panel-group">
