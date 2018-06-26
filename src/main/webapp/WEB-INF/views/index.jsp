@@ -62,10 +62,10 @@ h3, span {
 
 		<div class="row">
 		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" ></div> 
-			<div class="col-lg-8 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 0x; background: rgba(0, 0, 0, 0.5)" class="form-control form-rounded">
+			<div class="col-lg-8 col-md-4 col-sm-6 col-xs-12"  class="form-control form-rounded">
 
 
-<div class="container" align="center" >
+<div class="container form-control form-rounded" align="center" style = "margin-bottom: 0x; background: rgba(0, 0, 0, 0.5)">
 	<br>
 	<br>
 	<h1>Select Your Cryptocurrency:</h1>
@@ -111,6 +111,9 @@ h3, span {
 		<input type="date" name="date2" min="2000-01-02" max="2018-06-19" required> 
 		<br> <br> <br>
 		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" name="Submit">
+		<br>
+		<br>
+		<br>
 
 	</form>	
 	

@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">  
 
 <style>
-html {
+body {
 	background:
 		url(https://images.unsplash.com/photo-1518546305927-5a555bb7020d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjF9&s=9b23645c7536d17319d7c405820f01af&auto=format&fit=crop&w=1498&q=80)
 		no-repeat center fixed;
@@ -16,23 +17,29 @@ html {
 }
 
 h1 {
-	color: #e6ac00;
-	text-shadow: 2px 1px red;
+	color: #d0c066;
+	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 50px;
 	font-family: Impact;
 }
+button, .btn-primary {
+	margin:auto;
+	background-color: #d0c066;
+	color: black;
+	display: block;
+}
 
 h3 {
-	color: #e6ac00;
-	text-shadow: 2px 1px red;
+	color: #d0c066;
+	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 35px;
 	font-family: Impact;
 }
 
 table {
-	opacity: 0.8;
+	
 	background-color: black;
 	color: #d0c066;
 	margin: 0px auto;
@@ -55,27 +62,42 @@ th {
 td {
     height: 25px;
 }
+
+#boxbgrd
+{
+background: rgba(0, 0, 0, 0.5);
+padding: 10px 10px;
+margin: 40px auto;	
+
+
+}
 </style>
 
 <title>LeaderBoard</title>
+ 
 
 </head>
 <body>
+<div class="container">
 	<div class="row">
-		<div class="column">
-			<h1>Your achievement!</h1>
+		<div class="table column">
+		<br>
+		<br>
 			<br>
-			<h3>Money you left with:</h3>
-			<br><h3>${finalmoney}</h3>
+			<h3>Your final amount:</h3>
+			<h1>$ ${finalmoney}</h1>
 			<br>
-			<h3>You investment changed  ${percentage }%.</h3>
+			<h3>Your investment change was  ${percentage }%</h3>
 			<br>
-			<a href="/""><button>Start Again</button></a>
+			<a href="/"><button class="btn-primary btn-lg">Play Again?</button></a>
 			
 		</div>
-		<div class="column">
+		<br>
+		<br>
+		<div class="column" id="boxbgrd">
 
-			<h3>Mode: ${mode}</h1>
+			
+			<h3>Mode: ${mode}</h3>
 			<table class="table" border="1">
 				<thead class="thead">
 					<tr>
@@ -101,7 +123,7 @@ td {
 		</div>
 	</div>
 
-
+</div>
 </body>
 
 
