@@ -17,19 +17,20 @@
 <title>Index</title>
 <style>
 body {
+	background: url("images/coolcoin.gif") no-repeat center fixed;
 	background-size: cover;
 }
 
-h1, span {
-	color: darkgreen;
+h1  {
+	color: #d0c066;
 	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 80px;
 	font-family: Impact;
 }
 
-h2, span {
-	color: darkgreen;
+h2 {
+	color: #d0c066;
 	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 40px;
@@ -37,7 +38,7 @@ h2, span {
 }
 
 .buttonstyle {
-	color: darkgreen;
+	color: #d0c066;
 	text: white;
 	font-size: 35px;
 	padding: 15px 32px;
@@ -50,12 +51,21 @@ h2, span {
 .column {
 	flex: 30%;
 }
+
+#boxbgrd
+{
+background: rgba(0, 0, 0, 0.5);
+padding: 10px 10px;
+margin: 40px auto;	
+
+
+}
 </style>
 </head>
 <body>
-	<div class="container" align="center">
+	<div class="container" align="left">
 		<div class="row">
-			<div class="column">
+			<div class="column" id="boxbgrd" color="#d0c066">
 				<br> <br>
 				<h1>You Made Some Cash!!</h1>
 				<br> <br> <br>
@@ -71,7 +81,7 @@ h2, span {
 				<br> <br> <br> <a href="/continue"
 					style="border-radius: 35%;" class="buttonstyle"><button>Continue</button></a>
 			</div>
-			<div class="column">
+			<div class="column" id="boxbgrd">
 				<h4>
 					You invested in <img src="${image }" alt="logo" width="50"
 						height="50"> ${name } 
