@@ -127,7 +127,7 @@ margin: 40px auto;
 			
 			
 			<div id="target" style="overflow: scroll; width: 350px; height: 1000px;">
-            <a class="twitter-timeline" href="https://twitter.com/TheBitcoinNews?ref_src=twsrc%5Etfw">Tweets by TheBitcoinNews</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            ${link }
             </div>
 			</div>
 		</div>

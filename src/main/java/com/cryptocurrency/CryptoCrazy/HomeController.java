@@ -132,7 +132,7 @@ public class HomeController {
 		case "BNB":
 			pricestart = price1.getBody().getBNB().getUSD();
 			priceend = price2.getBody().getBNB().getUSD();
-			currencyid = 60622;
+			currencyid = 204788;
 			twitterlink = "<a class=\"twitter-timeline\" href=\"https://twitter.com/binance?ref_src=twsrc%5Etfw\">Tweets by Binance</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>";
 			
 			break;
@@ -302,7 +302,7 @@ public class HomeController {
 		String moneyString1 = formatter.format(pricestart);
 		String moneyString2 = formatter.format(priceend);
 		String moneyString3 = formatter.format(moneyOnHold);
-
+		System.out.println("imageUrl"+imageUrl);
 		if (pricedifference > 0) {
 			ModelAndView view1 = new ModelAndView("mademoney");
 
