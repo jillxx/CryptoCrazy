@@ -14,7 +14,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
-<title>Index</title>
+<title>Money Made</title>
 <style>
 body {
 	background: url("images/coolcoin.gif") no-repeat center fixed;

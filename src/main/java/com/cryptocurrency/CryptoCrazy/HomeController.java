@@ -1,3 +1,9 @@
+/**
+ * @author Jill Xu, John Aoraha, Mike DeCoopman
+ * @since 6/15/2018
+ * Description: Web game imitate the crypto currency trade in the history
+ *
+ */
 package com.cryptocurrency.CryptoCrazy;
 
 import java.math.BigDecimal;
@@ -29,6 +35,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cryptocurrency.CryptoCrazy.dao.LeaderboardRepo;
 import com.cryptocurrency.CryptoCrazy.model.Crypto;
 import com.cryptocurrency.CryptoCrazy.model.Leaderboard;
+
+
+
 
 @Controller
 // @SessionAttributes is used on a controller to designate which model
@@ -88,8 +97,6 @@ public class HomeController {
 		// calling the method to convert the date string to a long timestamp
 		Long timeStampStart = convertStringToTimestamp(date1);
 		Long timeStampEnd = convertStringToTimestamp(date2);
-
-		ModelAndView mv = new ModelAndView("index"); // page of the jsp that should be returned
 
 		// adding headers to our API request
 		HttpHeaders headers = new HttpHeaders();
@@ -275,8 +282,8 @@ public class HomeController {
 		System.out.println("pricedifference: " + pricedifference);
 		double percentChange = ((pricedifference) / pricestart) + 1;
 
-		// casting the double price to big decimal
-		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
+//		// casting the double price to big decimal
+//		BigDecimal pricediff = BigDecimal.valueOf(pricedifference);
 
 		// casting to number has two decimal places
 		BigDecimal percentage = BigDecimal.valueOf(percentChange);

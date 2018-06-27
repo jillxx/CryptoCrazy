@@ -14,7 +14,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
-<title>Index</title>
+<title>Welcome</title>
 <style>
 body {
 	background: url("images/digitalcoin.gif") no-repeat center fixed;
@@ -50,7 +50,7 @@ h2, span {
 
 				<form action="addplayer"
 					style="margin-bottom: 0px; background: rgba(0, 0, 0, 0.5)"
-					class="form-control form-rounded">
+					class="form-control form-rounded" method="post">
 
 					<span>Your Name:</span> <br> <input type="text"
 						class="form-control form-rounded" name="name"
@@ -83,8 +83,6 @@ h2, span {
 		integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
 		crossorigin="anonymous"></script>
 	</div>
-	<script>
-		localStorage.clear();
-	</script>
+
 </body>
 </html>

@@ -55,7 +55,7 @@ h3, span {
 
 </style>
 
-<title>Index</title>
+<title>Input</title>
 </head>
 <body>
 
@@ -75,7 +75,7 @@ h3, span {
 	<h3>Make sure they are in consecutive order!</h3>
 	<h3>Player starts with $1,000</h3>
 	<br>
-	<form name="date-form" action="pricechange"	onsubmit="return checkDate()" >
+	<form name="date-form" action="pricechange"	onsubmit="return checkDate()" method="post">
 		<select class ="buttonstyle" name="currency">
 			<option value="BTC">Bitcoin (BTC)</option>
 			<option value="ETH">Ethereum (ETH)</option>
@@ -111,6 +111,7 @@ h3, span {
 		<input type="date" name="date2" min="2000-01-02" max="2018-06-19" required> 
 		<br> <br> <br>
 		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" name="Submit">
+		<a href="/quit" style= "border-radius: 35%;" class="buttonstyle">Quit</a>
 		<br>
 		<br>
 		<br>
