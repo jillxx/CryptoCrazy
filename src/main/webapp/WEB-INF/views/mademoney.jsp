@@ -45,7 +45,6 @@ h2 {
 
 h3 {
 	color: #d0c066;
-	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 40px;
 	font-family: Impact;
@@ -60,12 +59,13 @@ h3 {
 }
 
 
-.boxbgrd {
+#boxbgrd {
 	background: rgba(0, 0, 0, 0.7);
 }
 
 #boxbgrd2 {
-	background: rgba(192, 1929, 192, 0.80);
+	background: rgba(255,255,255, 0.80);
+;
 }
 </style>
 </head>
@@ -84,7 +84,7 @@ h3 {
 		<div class="column" id="boxbgrd">
 
 			<br> <br>
-			<h1>You Made Some Cash!!</h1>
+			<h1>You Made Some Cash!</h1>
 			<br>
 
 			<div class="container" style="display: flex">
@@ -107,8 +107,8 @@ h3 {
 		</div>
 
 		<div class="column" id="boxbgrd">
-			<h3 style="font-size: 20px; background-color: white; margin: 0px">
-				${name} Trending News!!</h3>
+			<h3 style="font-size: 20px; background-color: white; margin: 0px; color: darkolivegreen" >
+				${name} Trending News</h3>
 			<div id="target"
 				style="overflow: scroll; width: 300px; height: 700px;">${link }
 			</div>
