@@ -64,7 +64,8 @@ h3 {
 }
 
 #boxbgrd2 {
-	background: rgba(192, 1929, 192, 0.80);
+	background: rgba(255,255,255, 0.80);
+;
 }
 </style>
 </head>
