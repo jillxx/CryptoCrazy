@@ -36,14 +36,15 @@ h2 {
 	font-size: 40px;
 	font-family: Impact;
 	background-color: white;
-  	 width: 33%;
-  	 height: 150px;
-  	 border-radius: 5px;
-  	 font-size: 27px;
-  	 padding: 5px;
-  	 margin:5px;
+	width: 33%;
+	height: 150px;
+	border-radius: 5px;
+	font-size: 27px;
+	padding: 5px;
+	margin: 5px;
 }
-h3{
+
+h3 {
 	color: #d0c066;
 	text-shadow: 2px 1px black;
 	text-align: center;
@@ -59,7 +60,7 @@ h3{
 	padding: 15px 32px;
 }
 
-.boxbgrd {
+#boxbgrd {
 	background: rgba(0, 0, 0, 0.5);
 }
 
@@ -69,7 +70,8 @@ h3{
 </style>
 </head>
 <body>
-	<div class="container" align="center" style="display:flex">
+	<div class="container" align="center"
+		style="display: flex; Padding: 30px">
 		<div class="column" id="boxbgrd2">
 			<h4>
 				You invested in <img src="${image }" alt="logo" width="50"
@@ -77,31 +79,38 @@ h3{
 				${startdate }
 			</h4>
 			<div id="target"
-				style="overflow: scroll; width: 300px; height: 450px;">${description }</div>
+				style="overflow: scroll; width: 300px; height: 580px;">${description }</div>
 		</div>
 
-		<div class="column boxbgrd">
+		<div class="column" id="boxbgrd">
 
 			<br> <br>
 			<h1>You Made Some Cash!!</h1>
 			<br>
-	<div class="container" style="display:flex">		
-			<h2>Purchase price: ${pricestart }</h2>
-			<h2>Sell price: ${priceend }</h2>
-			<h2>Percentage change: ${percent }%</h2>
-   </div>
-			<h3>Your Money: ${money }</h2>
+			<div class="container" style="display: flex">
+				<h2>Purchase price: ${pricestart }</h2>
+				<h2>Sell price: ${priceend }</h2>
+				<h2>Percentage change: ${percent }%</h2>
+			</div>
+			<h3>
+				Your Money: ${money }
+			</h3>
 			<br>
-			<h3>Remaining Buys/Sells: ${counter }</h2>
-			<br> <br> <a href="/continue">
+			<h3>
+				Remaining Buys/Sells: ${counter }
+			</h3>
+			<br> <br> 
+			<a href="/continue">
 				<button class="buttonstyle">Continue</button>
 			</a>
-
 		</div>
 
-		<div class="column boxbgrd">
+		<div class="column" id="boxbgrd">
+			<h3 style="font-size: 20px; background-color: white; margin: 0px">
+				${name} Trending News!!</h3>
 			<div id="target"
-				style="overflow: scroll; width: 300px; height: 700px;">${link }</div>
+				style="overflow: scroll; width: 300px; height: 700px;">${link }
+			</div>
 		</div>
 	</div>
 
