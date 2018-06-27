@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<title>Index</title>
+<title>Choose Your Crypto</title>
 <style>
 
 
@@ -38,16 +38,15 @@ h2, span {
 h3, span {
 	color: #d0c066;
     text-align: center;
-    font-size: 35px;
+    font-size: 25px;
     text-shadow: 2px 1px black;
     font-family: Impact;
 }
 
 .buttonstyle {
-	color: #d0c066;
-	
+	color: black;
 	text: white;
-	font-size: 35px;
+	font-size: 20px;
 	padding: 15px 32px;
 
 }
@@ -56,7 +55,6 @@ form { display: inline; }
 
 </style>
 
-<title>Input</title>
 </head>
 <body>
 
@@ -66,7 +64,7 @@ form { display: inline; }
 			<div class="col-lg-8 col-md-4 col-sm-6 col-xs-12"  class="form-control form-rounded">
 
 
-<div class="container form-control form-rounded" align="center" style = "margin-bottom: 0x; background: rgba(0, 0, 0, 0.5)">
+<div class="container form-control form-rounded" align="center" style = "margin-bottom: 0x; background: rgba(0, 0, 0, 0.8)">
 	<br>
 	<br>
 	<h1>Select Your Cryptocurrency:</h1>
@@ -104,12 +102,12 @@ form { display: inline; }
  		<br>
 		<h2>Purchase Date:</h2>
 		
-		<input type="date" name="date1"  min="2000-01-02" max="2018-06-19" required>
+		<input type="date" name="date1"  min="2009-01-01" max="2018-06-27" required>
 		<p id="invaliddate"></p>
 		
 	
 		<h2>Sell Date:</h2>
-		<input type="date" name="date2" min="2000-01-02" max="2018-06-19" required> 
+		<input type="date" name="date2" min="2009-01-01" max="2018-06-28" required> 
 		<br> <br> <br>
 		
 		<input class="btn-warning btn-lg" style = "background-color:#d0c066; border-color:#d0c066 " type="submit" name="Submit">   
