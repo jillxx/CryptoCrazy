@@ -23,15 +23,13 @@ body {
 
 h1 {
 	color: #d0c066;
-	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 60px;
 	font-family: Impact;
 }
 
 h2 {
-	color: #d0c066;
-	text-shadow: 2px 1px black;
+	color: chocolate;
 	text-align: center;
 	font-size: 40px;
 	font-family: Impact;
@@ -46,7 +44,6 @@ h2 {
 
 h3 {
 	color: #d0c066;
-	text-shadow: 2px 1px black;
 	text-align: center;
 	font-size: 40px;
 	font-family: Impact;
@@ -74,18 +71,18 @@ h3 {
 		style="display: flex; Padding: 30px">
 		<div class="column" id="boxbgrd2">
 			<h4>
-				You invested in <img src="${image }" alt="logo" width="50"
-					height="50"> ${name } <br> Currency Start Date:
-				${startdate }
-			</h4>
+				You invested in <br><img src="${image }" alt="logo" width="25"
+					height="25"> ${name } <br></h4> <p><b> Currency created:</b>
+				${startdate }</p>
+	
 			<div id="target"
-				style="overflow: scroll; width: 300px; height: 580px;">${description }</div>
+				style="overflow: scroll; width: 300px; height: 618px;">${description }</div>
 		</div>
 
 		<div class="column" id="boxbgrd">
 
 			<br> <br>
-			<h1>You Lost Your Cash!!</h1>
+			<h1>You Lost Money!</h1>
 			<br>
 			<div class="container" style="display: flex">
 				<h2>Purchase price: ${pricestart }</h2>
@@ -107,7 +104,7 @@ h3 {
 
 		<div class="column" id="boxbgrd">
 			<h3 style="font-size: 20px; background-color: white; margin: 0px">
-				${name} Trending News!!</h3>
+				${name} Trending News</h3>
 			<div id="target"
 				style="overflow: scroll; width: 300px; height: 700px;">${link }
 			</div>

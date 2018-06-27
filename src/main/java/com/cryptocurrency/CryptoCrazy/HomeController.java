@@ -134,7 +134,7 @@ public class HomeController {
 			pricestart = price1.getBody().getBTC().getUSD();
 			priceend = price2.getBody().getBTC().getUSD();
 			currencyid = 1182;
-			twitterlink = "<a class=\"twitter-timeline\" href=\"https://twitter.com/TheBitcoinNews?ref_src=twsrc%5Etfw\">Tweets by TheBitcoinNews</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>";
+			twitterlink = "<a class=\"twitter-timeline\" href=\"https://twitter.com/TheBitcoinNews?ref_src=twsrc%5Etfw\"></a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>";
 			break;
 		case "BNB":
 			pricestart = price1.getBody().getBNB().getUSD();
