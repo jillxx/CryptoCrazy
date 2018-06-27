@@ -52,6 +52,7 @@ h3, span {
 
 }
 
+form { display: inline; }
 
 </style>
 
@@ -110,13 +111,16 @@ h3, span {
 		<h2>Sell Date:</h2>
 		<input type="date" name="date2" min="2000-01-02" max="2018-06-19" required> 
 		<br> <br> <br>
-		<input style= "border-radius: 35%;" class="buttonstyle" type="submit" name="Submit">
-		<a href="/quit" style= "border-radius: 35%;" class="buttonstyle">Quit</a>
+		
+		<input class="btn-warning btn-lg" style = "background-color:#d0c066; border-color:#d0c066 " type="submit" name="Submit">   
+	</form>	
+		<a href="/quit"><button style = "background-color:#d0c066; border-color:#d0c066 " class="btn-warning btn-lg">&nbsp&nbspQuit&nbsp&nbsp</button></a>
+		
+
 		<br>
 		<br>
 		<br>
 
-	</form>	
 	<p style = "color: red">
 	${errormessage }
 	</p>
