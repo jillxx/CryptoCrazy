@@ -351,6 +351,13 @@ public class HomeController {
 
 		return new ModelAndView("index");
 	}
+	
+	// quit and show the leaderboard
+	@RequestMapping("quit")
+	public ModelAndView quit() {
+		counter = 0;
+		return cont();
+	}
 
 	// date type transfer method
 	public static Long convertStringToTimestamp(String str_date) {
@@ -367,6 +374,5 @@ public class HomeController {
 		}
 	}
 
-	// determine if the date is not backward
 
 }
