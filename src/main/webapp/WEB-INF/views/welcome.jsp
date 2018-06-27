@@ -41,7 +41,7 @@ h2, span {
 <body>
 	<br>
 	<br>
-	<h1>Crypto-Ca$h or Crash!</h1>
+	<h1>Crypto-Crazy!</h1>
 	<br>
 	<br>
 	<div class="container">
@@ -54,7 +54,7 @@ h2, span {
 
 					<span>Your Name:</span> <br> <input type="text"
 						class="form-control form-rounded" name="name"
-						style="width: 200px; height: 40px;" required> <br> <span>Select
+						style="width: 200px; height: 40px;"> <br> <span>Select
 						Mode:</span> <br> <select name="mode"
 						style="width: 100px; height: 40px;">
 
