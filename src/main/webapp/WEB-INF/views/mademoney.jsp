@@ -75,10 +75,10 @@ h3 {
 		<div class="column" id="boxbgrd2">
 			<h4>
 				You invested in <br><img src="${image }" alt="logo" width="25"
-					height="25"> ${name } <br>
-			</h4>
+					height="25"> ${name }  <br></h4> <p><b> Currency created:</b>
+				${startdate }</p>
 			
-			<div id="target" style="overflow: scroll; width: 300px; height: 580px;">${description }</div>
+			<div id="target" style="overflow: scroll; width: 300px; height: 618px;">${description }</div>
 		</div>
 
 		<div class="column" id="boxbgrd">

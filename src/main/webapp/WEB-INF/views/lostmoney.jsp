@@ -74,7 +74,7 @@ h3 {
 				You invested in <br><img src="${image }" alt="logo" width="25"
 					height="25"> ${name } <br></h4> <p><b> Currency created:</b>
 				${startdate }</p>
-			</h4>
+	
 			<div id="target"
 				style="overflow: scroll; width: 300px; height: 618px;">${description }</div>
 		</div>
