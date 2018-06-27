@@ -45,7 +45,7 @@ h2 {
 h3 {
 	color: #d0c066;
 	text-align: center;
-	font-size: 40px;
+	font-size: 30px;
 	font-family: Impact;
 }
 
@@ -89,6 +89,7 @@ h3 {
 				<h2>Sell price: ${priceend }</h2>
 				<h2>Percentage change: ${percent }%</h2>
 			</div>
+			<br>
 			<h3>
 				Your Money: ${money }
 			</h3>
