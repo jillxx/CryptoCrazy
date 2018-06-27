@@ -30,8 +30,7 @@ h1 {
 }
 
 h2 {
-	color: #d0c066;
-	text-shadow: 2px 1px black;
+	color: darkolivegreen;
 	text-align: center;
 	font-size: 40px;
 	font-family: Impact;
@@ -60,8 +59,9 @@ h3 {
 	padding: 15px 32px;
 }
 
-#boxbgrd {
-	background: rgba(0, 0, 0, 0.5);
+
+.boxbgrd {
+	background: rgba(0, 0, 0, 0.7);
 }
 
 #boxbgrd2 {
@@ -74,12 +74,11 @@ h3 {
 		style="display: flex; Padding: 30px">
 		<div class="column" id="boxbgrd2">
 			<h4>
-				You invested in <img src="${image }" alt="logo" width="50"
-					height="50"> ${name } <br> Currency Start Date:
-				${startdate }
+				You invested in <br><img src="${image }" alt="logo" width="50"
+					height="50"> ${name } <br>
 			</h4>
-			<div id="target"
-				style="overflow: scroll; width: 300px; height: 580px;">${description }</div>
+			
+			<div id="target" style="overflow: scroll; width: 300px; height: 580px;">${description }</div>
 		</div>
 
 		<div class="column" id="boxbgrd">
@@ -87,6 +86,7 @@ h3 {
 			<br> <br>
 			<h1>You Made Some Cash!!</h1>
 			<br>
+
 			<div class="container" style="display: flex">
 				<h2>Purchase price: ${pricestart }</h2>
 				<h2>Sell price: ${priceend }</h2>
@@ -95,6 +95,7 @@ h3 {
 			<h3>
 				Your Money: ${money }
 			</h3>
+
 			<br>
 			<h3>
 				Remaining Buys/Sells: ${counter }
