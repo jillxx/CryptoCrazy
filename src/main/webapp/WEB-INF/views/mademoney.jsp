@@ -60,7 +60,7 @@ h3 {
 
 
 #boxbgrd {
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.7);
 }
 
 #boxbgrd2 {
@@ -71,7 +71,7 @@ h3 {
 </head>
 <body>
 	<div class="container" align="center"
-		style="display: flex; Padding: 30px">
+		style="display: flex; Padding: 10px">
 		<div class="column" id="boxbgrd2">
 			<h4>
 				You invested in <br><img src="${image }" alt="logo" width="25"
@@ -102,9 +102,8 @@ h3 {
 				Remaining Buys/Sells: ${counter }
 			</h3>
 			<br> <br> 
-			<a href="/continue">
-				<button class="buttonstyle">Continue</button>
-			</a>
+			<a href="/continue"><button style = "background-color:#d0c066; border-color:#d0c066 " class="btn-warning btn-lg">&nbsp&nbspContinue&nbsp&nbsp</button></a>
+		
 		</div>
 
 		<div class="column" id="boxbgrd">

@@ -21,13 +21,23 @@ body {
 	background-size: cover;
 }
 
-h1, span {
+h1{
 	color: black;
 	text-shadow: 3px 2px #d0c066;
 	text-align: center;
 	font-size: 80px;
 	font-family: Impact;
 }
+span{
+
+	color: #d0c066;
+	text-shadow: 3px 2px black;
+	text-align: center;
+	font-size: 80px;
+	font-family: Impact;
+
+}
+
 
 h2, span {
 	font-size: 40px;
