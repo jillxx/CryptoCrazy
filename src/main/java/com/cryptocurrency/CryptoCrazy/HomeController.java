@@ -241,7 +241,11 @@ public class HomeController {
 			twitterlink = "<a class=\"twitter-timeline\" href=\"https://twitter.com/Ripple?ref_src=twsrc%5Etfw\">Tweets by Ripple</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>";
 			break;
 		}
-
+		if (pricestart == 0.0) {
+			ModelAndView mverror = new ModelAndView("index");
+			String emessage = "No price data available for " + currencyType + " on " + date1 + ".";
+			return mverror.addObject("errormessage", emessage);
+		}
 		// getting all the information from the snapshot url
 		ResponseEntity<Crypto> currencydetail = restTemplate.exchange(
 				"https://www.cryptocompare.com/api/data/coinsnapshotfullbyid/?id=" + currencyid, HttpMethod.GET, entity,
@@ -272,11 +276,7 @@ public class HomeController {
 		}
 		dateCounter++;
 
-		if (pricestart == 0.0) {
-			ModelAndView mverror = new ModelAndView("index");
-			String emessage = "No price data available for " + currencyType + " on " + date1 + ".";
-			return mverror.addObject("errormessage", emessage);
-		}
+		
 
 		// difference between two prices
 		double pricedifference = priceend - pricestart;
