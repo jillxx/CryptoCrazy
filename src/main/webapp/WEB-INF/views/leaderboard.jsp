@@ -110,10 +110,10 @@ margin: 40px auto;
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach begin="1" end="20" var="leader" varStatus="loop"
+					<c:forEach begin="0" end="19" var="leader" varStatus="loop"
 						items="${leaderlist}">
 						<tr>
-							<td>${loop.index }</td>
+							<td>${loop.count}</td>
 							<td>${leader.name}</td>
 							<td>${leader.score}</td>
 

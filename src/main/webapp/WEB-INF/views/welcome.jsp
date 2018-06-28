@@ -64,7 +64,7 @@ h2, span {
 
 					<span>Your Name:</span> <br> <input type="text"
 						class="form-control form-rounded" name="name"
-						style="width: 200px; height: 40px;"> <br> <span>Select
+						style="width: 200px; height: 40px;" required> <br> <span>Select
 						Mode:</span> <br> <select name="mode"
 						style="width: 100px; height: 40px;">
 
