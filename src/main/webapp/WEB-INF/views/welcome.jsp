@@ -71,7 +71,6 @@ h2, span {
 						<option value="Easy">Easy</option>
 						<option value="Medium">Medium</option>
 						<option value="Difficult">Difficult</option>
-						<option value="Survival">Survival</option>
 
 					</select> <br> <br> <input class="btn btn-warning" type="submit"
 						value="Submit" style="width: 80px;">
